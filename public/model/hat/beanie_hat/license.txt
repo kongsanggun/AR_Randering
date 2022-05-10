@@ -1,0 +1,11 @@
+Model Information:
+* title:	Beanie Hat
+* source:	https://sketchfab.com/3d-models/beanie-hat-25cb3b0549d049dfb4f180c81e43be90
+* author:	shedmon (https://sketchfab.com/shedmon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Beanie Hat" (https://sketchfab.com/3d-models/beanie-hat-25cb3b0549d049dfb4f180c81e43be90) by shedmon (https://sketchfab.com/shedmon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

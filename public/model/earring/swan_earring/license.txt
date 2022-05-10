@@ -1,0 +1,11 @@
+Model Information:
+* title:	Swan Earring
+* source:	https://sketchfab.com/3d-models/swan-earring-39ba87f0e3be4269a7e0d9148e1025fc
+* author:	DineshThennarasan (https://sketchfab.com/dineshthennarasan)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Swan Earring" (https://sketchfab.com/3d-models/swan-earring-39ba87f0e3be4269a7e0d9148e1025fc) by DineshThennarasan (https://sketchfab.com/dineshthennarasan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

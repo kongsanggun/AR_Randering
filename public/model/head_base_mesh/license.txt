@@ -1,0 +1,11 @@
+Model Information:
+* title:	Head Base Mesh
+* source:	https://sketchfab.com/3d-models/head-base-mesh-660e8173c2014cc48a785caf862da7a6
+* author:	torchwurm (https://sketchfab.com/torchwurm)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Head Base Mesh" (https://sketchfab.com/3d-models/head-base-mesh-660e8173c2014cc48a785caf862da7a6) by torchwurm (https://sketchfab.com/torchwurm) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

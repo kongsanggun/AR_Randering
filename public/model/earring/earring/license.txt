@@ -1,0 +1,11 @@
+Model Information:
+* title:	Earrings
+* source:	https://sketchfab.com/3d-models/earrings-45b264dcf8d54ecb8b5d89856f86fc41
+* author:	Mihail Burmistrov (https://sketchfab.com/mishkin79)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Earrings" (https://sketchfab.com/3d-models/earrings-45b264dcf8d54ecb8b5d89856f86fc41) by Mihail Burmistrov (https://sketchfab.com/mishkin79) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

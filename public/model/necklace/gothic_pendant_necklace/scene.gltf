@@ -1,0 +1,604 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 21315,
+      "max": [
+        0.12956203520298004,
+        0.005173599347472191,
+        0.0028082963544875383
+      ],
+      "min": [
+        -0.14020885527133942,
+        -0.3017217218875885,
+        -0.07353245466947556
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 255780,
+      "componentType": 5126,
+      "count": 21315,
+      "max": [
+        0.9970899224281311,
+        0.9996237754821777,
+        0.9999701976776123
+      ],
+      "min": [
+        -0.999934196472168,
+        -0.999942421913147,
+        -0.9999713897705078
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 21315,
+      "max": [
+        1.000000238418579,
+        1.000000238418579
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 111360,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 511560,
+      "componentType": 5126,
+      "count": 147,
+      "max": [
+        0.002469907281920314,
+        0.003556046402081847,
+        3.152120143568027e-06
+      ],
+      "min": [
+        -0.004608085844665766,
+        -0.0035560987889766693,
+        -0.0015388812171295285
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 513324,
+      "componentType": 5126,
+      "count": 147,
+      "max": [
+        0.9999033212661743,
+        0.9999030828475952,
+        0.9993703365325928
+      ],
+      "min": [
+        -0.9999028444290161,
+        -0.999907374382019,
+        -0.9994022846221924
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 170520,
+      "componentType": 5126,
+      "count": 147,
+      "max": [
+        1.000000238418579,
+        1.000000238418579
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 445440,
+      "componentType": 5125,
+      "count": 768,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 515088,
+      "componentType": 5126,
+      "count": 11296,
+      "max": [
+        0.2028309404850006,
+        0.21783243119716644,
+        0.08748649060726166
+      ],
+      "min": [
+        -0.38191547989845276,
+        -0.2173973023891449,
+        -0.08524063229560852
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 650640,
+      "componentType": 5126,
+      "count": 11296,
+      "max": [
+        0.9998965263366699,
+        0.9998416900634766,
+        0.9993549585342407
+      ],
+      "min": [
+        -0.9996951818466187,
+        -0.9996658563613892,
+        -0.9998593330383301
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 11296,
+      "max": [
+        0.9998793005943298,
+        0.9999057650566101,
+        0.999984860420227,
+        1.0
+      ],
+      "min": [
+        -0.9999942779541016,
+        -0.9998966455459595,
+        -0.9998641610145569,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 171696,
+      "componentType": 5126,
+      "count": 11296,
+      "max": [
+        0.9970878958702087,
+        0.9970473051071167
+      ],
+      "min": [
+        0.002611875534057617,
+        0.002607317641377449
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 448512,
+      "componentType": 5125,
+      "count": 28848,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "cedeon (https://sketchfab.com/cedeon)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/gothic-pendant-necklace-da1b584886b94a7fb9c98dd642a319b3",
+      "title": "Gothic Pendant Necklace"
+    },
+    "generator": "Sketchfab-12.68.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 563904,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 262064,
+      "byteOffset": 563904,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 786192,
+      "byteOffset": 825968,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 180736,
+      "byteOffset": 1612160,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1792896,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/M_Pendant_LP_baseColor.png"
+    },
+    {
+      "uri": "textures/M_Pendant_LP_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/M_Pendant_LP_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "M_Chrome",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.667162779707386,
+          0.667162779707386,
+          0.667162779707386,
+          1.0
+        ],
+        "roughnessFactor": 0.13367505011463324
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "M_Pendant_LP",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "chain1_M_Chrome_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "chain1.001_M_Chrome_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "PendantGothic_M_Pendant_LP_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TANGENT": 10,
+            "TEXCOORD_0": 11
+          },
+          "indices": 12,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.005040128715336323,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.1191333893681594e-18,
+        -0.005040128715336323,
+        0.0,
+        0.0,
+        0.005040128715336323,
+        1.1191333893681594e-18,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "712875c1399248318549f58f91a836be.fbx"
+    },
+    {
+      "children": [
+        3,
+        6,
+        8,
+        13
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        -29.08647719990347,
+        -5.518906457566863,
+        -95.51711910171437,
+        0.0,
+        56.63930913109449,
+        79.46723428563203,
+        -21.83912397841966,
+        0.0,
+        77.11008775993375,
+        -60.45246356562044,
+        -19.98834696773717,
+        0.0,
+        407.6245422363281,
+        590.38623046875,
+        -100.54539489746094,
+        1.0
+      ],
+      "name": "Light"
+    },
+    {
+      "children": [
+        5
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Object_4"
+    },
+    {
+      "name": "Object_5"
+    },
+    {
+      "children": [
+        7
+      ],
+      "matrix": [
+        -65.15583280329096,
+        -44.52713576570858,
+        -61.41703047373549,
+        0.0,
+        -32.40134137821245,
+        89.53957451233616,
+        -30.542088974418615,
+        0.0,
+        68.59205472129975,
+        -1.0718647115348782e-05,
+        -72.7676336239627,
+        0.0,
+        735.88916015625,
+        495.8309326171875,
+        692.5791015625,
+        1.0
+      ],
+      "name": "Camera"
+    },
+    {
+      "name": "Object_7"
+    },
+    {
+      "children": [
+        9,
+        11
+      ],
+      "matrix": [
+        697.6898803710938,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.00011366810931486418,
+        -697.6898803710845,
+        0.0,
+        0.0,
+        697.6898803710845,
+        -0.00011366810931486418,
+        0.0,
+        1.0815354585647583,
+        40.89152526855469,
+        -185.82347106933594,
+        1.0
+      ],
+      "name": "def_chain_1"
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        0.7880411148071289,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.7880411148071289,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.7880411148071289,
+        0.0,
+        0.0,
+        -2.9802322387695313e-08,
+        -3.725290298461914e-09,
+        1.0
+      ],
+      "name": "chain1"
+    },
+    {
+      "mesh": 0,
+      "name": "chain1_M_Chrome_0"
+    },
+    {
+      "children": [
+        12
+      ],
+      "matrix": [
+        7.911772010034632e-08,
+        3.467362378252056e-24,
+        1.047945976257321,
+        0.0,
+        -3.586967752235491e-08,
+        1.0479459762573236,
+        2.7080853111888996e-15,
+        0.0,
+        -1.0479459762573204,
+        -3.586967752235501e-08,
+        7.911772010034632e-08,
+        0.0,
+        -0.0021953824907541275,
+        -0.23735450208187103,
+        -0.0553412064909935,
+        1.0
+      ],
+      "name": "chain1.001"
+    },
+    {
+      "mesh": 1,
+      "name": "chain1.001_M_Chrome_0"
+    },
+    {
+      "children": [
+        14
+      ],
+      "matrix": [
+        1.3214227245033428e-05,
+        -4.95598736752856,
+        -99.87551893764498,
+        0.0,
+        -99.99669034693854,
+        -0.6467436165988579,
+        0.0320792507411797,
+        0.0,
+        -0.24831406543975684,
+        38.298977830213936,
+        -1.9004582465857032,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "PendantGothic"
+    },
+    {
+      "mesh": 2,
+      "name": "PendantGothic_M_Pendant_LP_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

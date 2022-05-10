@@ -1,12 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import ReactDOM, {render} from 'react-dom';
 import reportWebVitals from './reportWebVitals';
+
+import App1 from './Hat_AR';
+import App2 from './Necklace_AR';
+import App3 from './Earring_AR';
+
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App2 />
   </React.StrictMode>,
   document.getElementById('root')
 );
