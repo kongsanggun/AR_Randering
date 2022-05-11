@@ -28,7 +28,7 @@ const Home = () => {
             onClick={HatClick} > 모자 AR 렌더링 페이지 </button>
 
         <button className = "buttontransfer"
-            onClick={NecklaceClick} > 목걸이 AR 렌더링 페이지 </button>
+            onClick={NecklaceClick} > 작업중인 페이지! </button>
         </header>
       </div>
     );
