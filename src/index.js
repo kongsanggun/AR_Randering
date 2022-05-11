@@ -10,7 +10,6 @@ import App3 from './Earring_AR';
 import './index.css';
 
 ReactDOM.render(
-
     <Page_routes/>,
   document.getElementById('root')
 );

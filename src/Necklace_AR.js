@@ -30,7 +30,6 @@ const FaceFollower = (props) => {
   })
   
   return (
-
     <object3D ref={objRef}>
       <Suspense fallback={null}>
       <ambientLight/>
@@ -53,12 +52,6 @@ const DirtyHook = (props) => {
 
 const compute_sizing = () => {
   // compute  size of the canvas:
-<<<<<<< HEAD
-=======
-  const wheight = (window.innerHeight)
-  const wWidth = (window.innerWidth)
-
->>>>>>> a61563958bd05d3e035f063c3ceb1888f4936395
   const height = (window.innerHeight) * 0.50
   const width = (window.innerWidth) * 0.50
 
@@ -197,7 +190,6 @@ function App() {
         left : (window.innerWidth) * 0.25
       }} width = {sizing.width} height = {sizing.height} />
 
-<<<<<<< HEAD
     <button className = "snap_button" style={{
       position: 'fixed',
       zIndex: 2,
@@ -207,11 +199,6 @@ function App() {
       left : (window.innerWidth) * 0.025
       }} onClick={snapshot}> </button>
       
-=======
-      <button className = "buttontransfer" style={{
-        position: 'fixed',
-        zIndex: 2}}> 모자 AR 렌더링 페이지 </button>
->>>>>>> a61563958bd05d3e035f063c3ceb1888f4936395
     </div>
   )  
 };
