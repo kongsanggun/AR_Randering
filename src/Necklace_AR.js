@@ -124,18 +124,18 @@ function App() {
     }
   }
 
-  const camera = useRef(null)
-  const canvasRef = useRef(null)
-  const pictureCanvasRef = useRef(null)
+  const camera = useRef(null) // 카메라 입력
+  const canvasRef = useRef(null) // 3D 모델 출력
+  const pictureCanvasRef = useRef(null) // 임시로 카메라 입력받은거 canvas에 출력
   
   const snapshot = useCallback(() => {
-    const canvas = pictureCanvasRef.current;
-    canvas.getContext('2d').drawImage(camera.current, 0, 0);
+    const canvas = pictureCanvasRef.current; // 연결
+    canvas.getContext('2d').drawImage(camera.current, 0, 0); // 입력된 카메라 이미지 pictureCanvasRef에 그리기
 
     mergeImages([
-      //canvas.toDataURL('image/png'), // 살려줘 아니 왜 1/2로 줄어드냐 씹
-      canvasRef.current.toDataURL('image/png'),
-    ]).then(b64 => document.querySelector('img').src = b64)
+      //canvas.toDataURL('image/png'), // 살려줘 아니 왜 1/2로 줄어드냐 씹 -> 이거 때문에 이미지 병합 못함
+      canvasRef.current.toDataURL('image/png'), 
+    ]).then(b64 => document.querySelector('img').src = b64) // 이미지 병합한거 추가 라고 하지만 3d 모델만 저장
   })
 
   useEffect(() => {
@@ -178,17 +178,19 @@ function App() {
     />
     <img className = "snap" style={{
         position: 'fixed',
-        zIndex: 1,
+        zIndex: 1, // z축이 높아서 덮어씌워지게 보이는거 
         top : (window.innerHeight) * 0.5,
         left : (window.innerWidth) * 0.25
-      }} width = {sizing.width} height = {sizing.height} />
+      }} width = {sizing.width} height = {sizing.height} // 여기서 3d 모델만 저장된 이미지 출력 댐 
+      /> 
 
     <canvas className = "snap" ref={pictureCanvasRef} style={{
         position: 'fixed',
         zIndex: 0,
         top : (window.innerHeight) * 0.5,
         left : (window.innerWidth) * 0.25
-      }} width = {sizing.width} height = {sizing.height} />
+      }} width = {sizing.width} height = {sizing.height} 
+      />
 
     <button className = "snap_button" style={{
       position: 'fixed',
