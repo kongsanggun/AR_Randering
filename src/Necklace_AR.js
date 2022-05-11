@@ -1,16 +1,19 @@
-import React, {Suspense, useRef, useState, useEffect} from 'react';
+import React, {Suspense, useRef, useState, useEffect, useCallback} from 'react';
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { JEELIZFACEFILTER, NN_4EXPR } from 'facefilter'
 import { JeelizThreeFiberHelper } from './faceFilter/JeelizThreeFiberHelper.js'
+import mergeImages from 'merge-images';
 
-import {Model as Head} from './model/Neck_Head.js' 
+import {Model as Head} from './model/Head.js' 
 // 얼굴 3D 모델 (목부분에는 목걸이 모델이 보이지 않기 위함)
 
 import {Model as GoldChain} from './model/GoldChain' // 확인
+import {Model as Earring} from './model/Earring' // 완료
 import {Model as GoldNecklace} from './model/gold_necklace' // 확인
 import {Model as GothicPendant} from './model/gothic_pendant' // 확인
 import {Model as JashinNecklace} from './model/jashin_necklace' // 확인
+import {Model as Hat1} from './model/Hat.js' // 처마가 넓은 모자 (위치 수정 완료)
 
 // 목걸이 3D 모델
 
@@ -30,10 +33,13 @@ const FaceFollower = (props) => {
     <object3D ref={objRef}>
       <Suspense fallback={null}>
       <ambientLight/>
+      <Hat1/>
       <GoldChain/>
+      <Earring/>
       <Head/>
       </Suspense>
     </object3D>
+
   ) 
 }
 
@@ -46,15 +52,12 @@ const DirtyHook = (props) => {
 
 const compute_sizing = () => {
   // compute  size of the canvas:
-  const wheight = (window.innerHeight)
-  const wWidth = (window.innerWidth)
-
-  const height = Math.min(wWidth, wheight) 
-  const width = Math.min(wWidth, wheight)
+  const height = (window.innerHeight) * 0.50
+  const width = (window.innerWidth) * 0.50
 
   // compute position of the canvas:
   const top = 0
-  const left = (wWidth - width ) / 2
+  const left = (window.innerWidth) * 0.25
   
   return {width, height, top, left}
 }
@@ -122,6 +125,18 @@ function App() {
   }
 
   const camera = useRef(null)
+  const canvasRef = useRef(null)
+  const pictureCanvasRef = useRef(null)
+  
+  const snapshot = useCallback(() => {
+    const canvas = pictureCanvasRef.current;
+    canvas.getContext('2d').drawImage(camera.current, 0, 0);
+
+    mergeImages([
+      //canvas.toDataURL('image/png'), // 살려줘 아니 왜 1/2로 줄어드냐 씹
+      canvasRef.current.toDataURL('image/png'),
+    ]).then(b64 => document.querySelector('img').src = b64)
+  })
 
   useEffect(() => {
     window.addEventListener('resize', handle_resize)
@@ -139,10 +154,10 @@ function App() {
   }, [isInitialized])
 
   console.log('RENDER')
-
+    
   return (
     <div>
-      <Canvas className='mirrorX' ref={camera} style={{
+      <Canvas className='mirrorX' ref={canvasRef} style={{
         position: 'fixed',
         zIndex: 1,
         ...sizing
@@ -150,7 +165,7 @@ function App() {
       width = {sizing.width} height = {sizing.height} 
       gl={{ preserveDrawingBuffer: true // allow image capture
       }}
-      updateDefaultCamera = {true}>
+      updatedefaultcamera = "false">
         <DirtyHook sizing={sizing} />
         <FaceFollower faceIndex={0} expression={_expressions[0]} />
     </Canvas>
@@ -159,7 +174,31 @@ function App() {
         position: 'fixed',
         zIndex: 0,
         ...sizing
+      }} width = {sizing.width} height = {sizing.height}
+    />
+    <img className = "snap" style={{
+        position: 'fixed',
+        zIndex: 1,
+        top : (window.innerHeight) * 0.5,
+        left : (window.innerWidth) * 0.25
       }} width = {sizing.width} height = {sizing.height} />
+
+    <canvas className = "snap" ref={pictureCanvasRef} style={{
+        position: 'fixed',
+        zIndex: 0,
+        top : (window.innerHeight) * 0.5,
+        left : (window.innerWidth) * 0.25
+      }} width = {sizing.width} height = {sizing.height} />
+
+    <button className = "snap_button" style={{
+      position: 'fixed',
+      zIndex: 2,
+      height: (window.innerWidth) * 0.2,
+      width: (window.innerWidth) * 0.2,
+      top : (window.innerHeight) * 0.4,
+      left : (window.innerWidth) * 0.025
+      }} onClick={snapshot}> </button>
+      
     </div>
   )  
 };

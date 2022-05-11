@@ -14,7 +14,7 @@ export default function Model({ ...props }) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/model/head_base_mesh/scene.gltf')
   return (
-    <group ref={group} {...props} dispose={null} rotation={[0, 0, 0]} position={[0, -0.1435, 0]} scale={[1, 1, 1]}>
+    <group ref={group} {...props} dispose={null} rotation={[Math.PI * (0), 0, 0]} position={[0, -0.1435, 0]} scale={[0.9, 1, 1]}>
       <group>
         <mesh geometry={nodes.Head_basemesh_0.geometry} material={hiderMat} />
       </group>
