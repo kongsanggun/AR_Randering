@@ -4,13 +4,15 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { JEELIZFACEFILTER, NN_4EXPR } from 'facefilter'
 import { JeelizThreeFiberHelper } from './faceFilter/JeelizThreeFiberHelper.js'
 
-import {Model as Head} from './model/Neck_Head.js' 
+import {Model as Head} from './model/Head.js' 
 // 얼굴 3D 모델 (목부분에는 목걸이 모델이 보이지 않기 위함)
 
 import {Model as GoldChain} from './model/GoldChain' // 확인
+import {Model as Earring} from './model/Earring' // 완료
 import {Model as GoldNecklace} from './model/gold_necklace' // 확인
 import {Model as GothicPendant} from './model/gothic_pendant' // 확인
 import {Model as JashinNecklace} from './model/jashin_necklace' // 확인
+import {Model as Hat1} from './model/Hat.js' // 처마가 넓은 모자 (위치 수정 완료)
 
 // 목걸이 3D 모델
 
@@ -27,13 +29,17 @@ const FaceFollower = (props) => {
   })
   
   return (
+
     <object3D ref={objRef}>
       <Suspense fallback={null}>
       <ambientLight/>
+      <Hat1/>
       <GoldChain/>
+      <Earring/>
       <Head/>
       </Suspense>
     </object3D>
+
   ) 
 }
 
@@ -49,12 +55,12 @@ const compute_sizing = () => {
   const wheight = (window.innerHeight)
   const wWidth = (window.innerWidth)
 
-  const height = Math.min(wWidth, wheight) 
-  const width = Math.min(wWidth, wheight)
+  const height = (window.innerHeight) * 0.7
+  const width = (window.innerWidth) * 0.4
 
   // compute position of the canvas:
   const top = 0
-  const left = (wWidth - width ) / 2
+  const left = (window.innerWidth) * 0.4
   
   return {width, height, top, left}
 }
@@ -160,6 +166,10 @@ function App() {
         zIndex: 0,
         ...sizing
       }} width = {sizing.width} height = {sizing.height} />
+
+      <button className = "buttontransfer" style={{
+        position: 'fixed',
+        zIndex: 2}}> 모자 AR 렌더링 페이지 </button>
     </div>
   )  
 };

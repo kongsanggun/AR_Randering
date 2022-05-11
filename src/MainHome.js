@@ -10,6 +10,9 @@ const Home = () => {
     function HatClick(e){
         window.location.href = "/Hat_AR"
     }
+    function NecklaceClick(e){
+        window.location.href = "Necklace_AR"
+    }
     
     return (
       <div className="App">
@@ -18,14 +21,14 @@ const Home = () => {
         
         <p>ACC Studio 에 오신걸 환영합니다!</p>
 
-        <button className = "buttontranser"
+        <button className = "buttontransfer"
             onClick={EarringClick} > 귀걸이 AR 렌더링 페이지 </button>
-
         
-        <button className = "buttontranser"
-            onClick={EarringClick} > 귀걸이 AR 렌더링 페이지 </button>
+        <button className = "buttontransfer"
+            onClick={HatClick} > 모자 AR 렌더링 페이지 </button>
 
-
+        <button className = "buttontransfer"
+            onClick={NecklaceClick} > 목걸이 AR 렌더링 페이지 </button>
         </header>
       </div>
     );

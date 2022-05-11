@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM, {render} from 'react-dom';
+import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
-import page_route from "./page_route";
+import Page_routes from "./page_routes";
 import App1 from './Hat_AR';
 import App2 from './Necklace_AR';
 import App3 from './Earring_AR';
@@ -11,7 +11,7 @@ import './index.css';
 
 ReactDOM.render(
 
-    <App1/>,
+    <Page_routes/>,
   document.getElementById('root')
 );
 

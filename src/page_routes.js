@@ -4,7 +4,7 @@ import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
 
 import Hat_AR from "./Hat_AR";
 import Earring_AR from "./Earring_AR";
-import Necklace_AR from "./Necklace_AR"
+import Necklace_AR from "./Necklace_AR";
 import MainHome from "./MainHome";
 
 function Buttons() {
