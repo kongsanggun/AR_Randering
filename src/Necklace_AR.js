@@ -55,12 +55,12 @@ const compute_sizing = () => {
   const wheight = (window.innerHeight)
   const wWidth = (window.innerWidth)
 
-  const height = (window.innerHeight) * 0.7
-  const width = (window.innerWidth) * 0.4
+  const height = (window.innerHeight) * 0.50
+  const width = (window.innerWidth) * 0.50
 
   // compute position of the canvas:
   const top = 0
-  const left = (window.innerWidth) * 0.4
+  const left = (window.innerWidth) * 0.25
   
   return {width, height, top, left}
 }
