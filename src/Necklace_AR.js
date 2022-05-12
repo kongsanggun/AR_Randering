@@ -13,51 +13,56 @@ import {Model as Earring} from './model/Earring' // 완료
 import {Model as GoldNecklace} from './model/gold_necklace' // 확인
 import {Model as GothicPendant} from './model/gothic_pendant' // 확인
 import {Model as JashinNecklace} from './model/jashin_necklace' // 확인
+import {Model as ChristmasHat} from './model/ChristmasHat2.js' // 크리스마스 모자 (위치 수정 완료)
+import {Model as BeanieHat} from './model/BeanieHat.js' // 비니모자 (위치 수정 완료)
 import {Model as Hat1} from './model/Hat.js' // 처마가 넓은 모자 (위치 수정 완료)
 
 // 목걸이 3D 모델
 
 const _maxFacesDetected = 1 // max number of detected faces
 const _faceFollowers = new Array(_maxFacesDetected)
-const _temporary = 0
+let _temporary1 = false // 임의로 만든 변수
+let _temporary2 = false // 임의로 만든 변수
+const _temporary3 = 1 // 임의로 만든 변수
 
 let _expressions = null
 const FaceFollower0 = (props) => {
-  // This reference will give us direct access to the mesh
-  const objRef = useRef()
-  useEffect(() => {
-    const threeObject3D = objRef.current
-    _faceFollowers[props.faceIndex] = threeObject3D  
-  })
+  
   
   return (
-    <object3D ref={objRef}>
-      <Suspense fallback={null}>
-      <ambientLight/>
+     
       <Earring/>
-      <Hat1/>
-      <GoldChain/>
-      <Head/>
-      </Suspense>
-    </object3D>
+
 
   ) 
 }
 const FaceFollower = (props) => {
   // This reference will give us direct access to the mesh
   const objRef = useRef()
+
+  function SelectHat(){
+    switch(_temporary1){
+      case 1 : return <Hat1/>
+      case 2 : return <BeanieHat/>
+      case 3 : return <ChristmasHat/>
+      default:
+        return null;
+    }
+
+}
   useEffect(() => {
     const threeObject3D = objRef.current
     _faceFollowers[props.faceIndex] = threeObject3D  
+    console.log(_temporary1)
+    console.log(_temporary2)
   })
   
   return (
-    <object3D ref={objRef}>
+    <object3D ref={objRef} >
       <Suspense fallback={null}>
       <ambientLight/>
-      <Earring/>
-      <Hat1/>
-      <GoldChain/>
+        {_temporary1 && <Hat1/>}
+      {_temporary2 && <GoldChain/> }
       <Head/>
       </Suspense>
     </object3D>
@@ -74,11 +79,11 @@ const FaceFollower2 = (props) => {
   
   return (
     <object3D ref={objRef}>
-
-
-      
-
-
+        <Suspense fallback={null}>
+      <ambientLight/>
+            <Hat1/>
+            <Head/>
+      </Suspense>
     </object3D>
 
   ) 
@@ -169,8 +174,8 @@ function App() {
   const camera = useRef(null) // 카메라 입력
   const canvasRef = useRef(null) // 3D 모델 출력
   const pictureCanvasRef = useRef(null) // 임시로 카메라 입력받은거 canvas에 출력
-  const [visible1,setVisible1] = useState(false);
-  const [visible2,setVisible2] = useState(false);
+  const [visible1,setVisible1] = useState(true);
+  const [visible2,setVisible2] = useState(true);
   const snapshot = useCallback(() => {
     const canvas = pictureCanvasRef.current; // 연결
     canvas.getContext('2d').drawImage(camera.current, 0, 0); // 입력된 카메라 이미지 pictureCanvasRef에 그리기
@@ -210,9 +215,9 @@ function App() {
       }}
       updatedefaultcamera = "false">
         <DirtyHook sizing={sizing} />
-      
-        {visible1 && <FaceFollower faceIndex={0} expression={_expressions[0]} />}
 
+        <FaceFollower faceIndex={0} expression={_expressions[0]} />
+       
     </Canvas>
   
     <canvas className='mirrorX' ref={camera} style={{
@@ -251,22 +256,44 @@ function App() {
         /*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */
       position: 'fixed',
       zIndex: 2,
-      height: (window.innerWidth) * 0.2,
-      width: (window.innerWidth) * 0.2,
+      height: (window.innerWidth) * 0.1,
+      width: (window.innerWidth) * 0.1,
       top : (window.innerHeight) * 0.05,
       left : (window.innerWidth) * 0.025
       // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
-      }} onClick= {() => {setVisible1(!visible1)}}> {visible1 ? "숨겨진 상태1" : "보여진 상태1"} </button>
+      }} onClick= {() => {
+        setVisible1(!visible1)
+        _temporary1 = visible1
+      }}>
+         {_temporary1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태1"} </button>
+
+         <button className = "snap_button" style={{
+        /*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */
+      position: 'fixed',
+      zIndex: 2,
+      height: (window.innerWidth) * 0.1,
+      width: (window.innerWidth) * 0.1,
+      top : (window.innerHeight) * 0.23,
+      left : (window.innerWidth) * 0.025
+      // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
+      }} onClick= {() => {
+        setVisible1(!visible1)
+        _temporary1 = visible1
+      }}>
+         {_temporary1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태2"} </button>
 
 
       <button className = "snap_button" style={{
       position: 'fixed',
       zIndex: 2,
-      height: (window.innerWidth) * 0.2,
-      width: (window.innerWidth) * 0.2,
+      height: (window.innerWidth) * 0.1,
+      width: (window.innerWidth) * 0.1,
       top : (window.innerHeight) * 0.8,
       left : (window.innerWidth) * 0.025
-      }} onClick= {() => {setVisible2(!visible2)}}> {visible2 ? "숨겨진 상태2" : "보여진 상태2"} </button>
+      }} onClick= {() => {
+        setVisible2(!visible2)
+        _temporary2 = visible2
+      }}> {_temporary2 ? "목걸이 보여진 상태2" : "목걸이 숨겨진 상태2"} </button>
       
     </div>
   )  
