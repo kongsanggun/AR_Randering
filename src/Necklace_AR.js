@@ -21,7 +21,7 @@ import {Model as Hat1} from './model/Hat.js' // 처마가 넓은 모자 (위치 
 
 const _maxFacesDetected = 1 // max number of detected faces
 const _faceFollowers = new Array(_maxFacesDetected)
-let _temporary1 = false // 임의로 만든 변수
+let _temporary1 = 0 // 임의로 만든 변수
 let _temporary2 = false // 임의로 만든 변수
 const _temporary3 = 1 // 임의로 만든 변수
 
@@ -61,7 +61,7 @@ const FaceFollower = (props) => {
     <object3D ref={objRef} >
       <Suspense fallback={null}>
       <ambientLight/>
-        {_temporary1 && <Hat1/>}
+       {SelectHat()}
       {_temporary2 && <GoldChain/> }
       <Head/>
       </Suspense>
@@ -176,6 +176,11 @@ function App() {
   const pictureCanvasRef = useRef(null) // 임시로 카메라 입력받은거 canvas에 출력
   const [visible1,setVisible1] = useState(true);
   const [visible2,setVisible2] = useState(true);
+  const [visible3,setVisible3] = useState(true);
+
+  
+  const Hats = [<Hat1/>,<BeanieHat/>,<ChristmasHat/>];
+  const Necklace = [];
   const snapshot = useCallback(() => {
     const canvas = pictureCanvasRef.current; // 연결
     canvas.getContext('2d').drawImage(camera.current, 0, 0); // 입력된 카메라 이미지 pictureCanvasRef에 그리기
@@ -263,9 +268,18 @@ function App() {
       // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
       }} onClick= {() => {
         setVisible1(!visible1)
-        _temporary1 = visible1
+        if(visible1)
+        {
+          _temporary1 = 1
+          setVisible2(false)
+        }
+        else
+        {
+          
+          _temporary1 = 0
+        }
       }}>
-         {_temporary1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태1"} </button>
+         {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태1"} </button>
 
          <button className = "snap_button" style={{
         /*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */
@@ -277,10 +291,18 @@ function App() {
       left : (window.innerWidth) * 0.025
       // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
       }} onClick= {() => {
-        setVisible1(!visible1)
-        _temporary1 = visible1
+        setVisible2(!visible2)
+        if(visible2)
+        {
+          _temporary1 = 2
+          setVisible1(false)
+        }
+        else
+        {
+          _temporary1= 0
+        }
       }}>
-         {_temporary1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태2"} </button>
+         {visible2 ? "모자 보이는 상태 2" : "모자 숨겨진 상태2"} </button>
 
 
       <button className = "snap_button" style={{
@@ -291,9 +313,9 @@ function App() {
       top : (window.innerHeight) * 0.8,
       left : (window.innerWidth) * 0.025
       }} onClick= {() => {
-        setVisible2(!visible2)
-        _temporary2 = visible2
-      }}> {_temporary2 ? "목걸이 보여진 상태2" : "목걸이 숨겨진 상태2"} </button>
+        setVisible3(!visible3)
+        _temporary3 = visible3
+      }}> {visible3 ? "목걸이 보여진 상태2" : "목걸이 숨겨진 상태2"} </button>
       
     </div>
   )  
