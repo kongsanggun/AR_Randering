@@ -11,7 +11,7 @@ const Home = () => {
         window.location.href = "/Hat_AR"
     }
     function NecklaceClick(e){
-        window.location.href = "Necklace_AR"
+        window.location.href = "/Necklace_AR"
     }
     
     return (
