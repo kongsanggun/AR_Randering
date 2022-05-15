@@ -207,6 +207,10 @@ function App() {
   }, [isInitialized])
 
   console.log('RENDER')
+
+  function GuidePAgeClick(e){
+    window.location.href = "/GuidePage"
+}
     
   return (
     <div>
@@ -316,6 +320,10 @@ function App() {
         setVisible3(!visible3)
         _temporary3 = visible3
       }}> {visible3 ? "목걸이 보여진 상태2" : "목걸이 숨겨진 상태2"} </button>
+
+    <button className = "buttonshow" onClick = {GuidePAgeClick}>
+
+    다음 페이지로 이동 </button>
       
     </div>
   )  
