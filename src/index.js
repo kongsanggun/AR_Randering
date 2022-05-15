@@ -6,7 +6,7 @@ import Page_routes from "./page_routes";
 import App1 from './Hat_AR';
 import App2 from './Necklace_AR';
 import App3 from './Earring_AR';
-
+import GuidePage from './GuidePage';
 import './index.css';
 
 ReactDOM.render(
