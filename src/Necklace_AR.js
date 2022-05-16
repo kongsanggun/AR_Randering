@@ -27,49 +27,7 @@ let _temporary2 = false // 임의로 만든 변수
 const _temporary3 = 1 // 임의로 만든 변수
 
 let _expressions = null
-const FaceFollower0 = (props) => {
-  
-  
-  return (
-     
-      <Earring/>
 
-
-  ) 
-}
-const FaceFollower = (props) => {
-  // This reference will give us direct access to the mesh
-  const objRef = useRef()
-
-  function SelectHat(){
-    switch(_temporary1){
-      case 1 : return <Hat1/>
-      case 2 : return <BeanieHat/>
-      case 3 : return <ChristmasHat/>
-      default:
-        return null;
-    }
-
-}
-  useEffect(() => {
-    const threeObject3D = objRef.current
-    _faceFollowers[props.faceIndex] = threeObject3D  
-    console.log(_temporary1)
-    console.log(_temporary2)
-  })
-  
-  return (
-    <object3D ref={objRef} >
-      <Suspense fallback={null}>
-      <ambientLight/>
-       {SelectHat()}
-      {_temporary2 && <GoldChain/> }
-      <Head/>
-      </Suspense>
-    </object3D>
-
-  ) 
-}
 const FaceFollower2 = (props) => {
   // This reference will give us direct access to the mesh
   const objRef = useRef()
@@ -81,14 +39,48 @@ const FaceFollower2 = (props) => {
   return (
     <object3D ref={objRef}>
         <Suspense fallback={null}>
-      <ambientLight/>
-            <Hat1/>
-            <Head/>
+          <ambientLight/>
+          <ChristmasHat/>
       </Suspense>
     </object3D>
+  )}
 
-  ) 
-}
+  const FaceFollower0 = (props) => {
+    return ( 
+        <Earring/>
+    ) 
+  }
+  const FaceFollower = (props) => {
+    // This reference will give us direct access to the mesh
+    const objRef = useRef()
+  
+    function SelectHat(){
+      switch(_temporary1){
+        case 1 : return <Hat1/>
+        case 2 : return <BeanieHat/>
+        case 3 : return <ChristmasHat/>
+        default:
+          return null;
+      }
+  }
+    useEffect(() => {
+      const threeObject3D = objRef.current
+      _faceFollowers[props.faceIndex] = threeObject3D  
+      console.log(_temporary1)
+      console.log(_temporary2)
+    })
+    
+    return (
+      <object3D ref={objRef} >
+        <Suspense fallback={null}>
+        <ambientLight/>
+         {SelectHat()}
+        {_temporary2 && <GoldChain/> }
+        <Head/>
+        </Suspense>
+      </object3D>
+    ) 
+  }
 
 let _threeFiber = null
 const DirtyHook = (props) => {
@@ -182,16 +174,14 @@ function App() {
   const [visible2,setVisible2] = useState(true);
   const [visible3,setVisible3] = useState(true);
 
-  const Hats = [<Hat1/>,<BeanieHat/>,<ChristmasHat/>];
-  const Necklace = [];
   const snapshot = useCallback(() => {
-    const canvas = pictureCanvasRef.current; // 연결
-    canvas.getContext('2d').drawImage(camera.current, 0, 0); // 입력된 카메라 이미지 pictureCanvasRef에 그리기
-
+    const canvas = pictureCanvasRef.current;
+    canvas.getContext('2d').drawImage(canvasRef.current, 0, 0, sizing.width, sizing.height);
+    
     mergeImages([
-      //canvas.toDataURL('image/png'), // 살려줘 아니 왜 1/2로 줄어드냐 씹 -> 이거 때문에 이미지 병합 못함
-      canvasRef.current.toDataURL('image/png'), 
-    ]).then(b64 => document.querySelector('img').src = b64) // 이미지 병합한거 추가 라고 하지만 3d 모델만 저장
+      camera.current.toDataURL('image/png'),
+      canvas.toDataURL('image/png'),
+    ]).then(b64 => document.getElementById('preview').src = b64) // 이미지 병합
   })
 
   useEffect(() => {
@@ -323,13 +313,28 @@ function App() {
       gl={{ preserveDrawingBuffer: true // allow image capture
           }} updatedefaultcamera = "false">
         <DirtyHook sizing={sizing} />
-        <FaceFollower faceIndex={0} expression={_expressions[0]} />
+        <FaceFollower2 faceIndex={0} expression={_expressions[0]} />
       </Canvas>
+      
       <canvas className='camera' ref={camera} style={{
         position: 'fixed',
-        zIndex: 1,
+        zIndex: 0,
         ...sizing
       }} width = {sizing.width} height = {sizing.height}/>
+      
+      <img id = "preview" style={{
+        position: 'fixed',
+        zIndex: 3, // z축이 높아서 덮어씌워지게 보이는거 
+        ...sizing
+      }} width = {sizing.width} height = {sizing.height} 
+      />  {/* 캡쳐한 이미지 출력 */}
+      
+      <canvas className = "snap" ref={pictureCanvasRef} style={{
+        position: 'fixed',
+        zIndex: -1,
+        ...sizing
+      }} width = {sizing.width} height = {sizing.height} /> {/* 모델 저장 */}
+
       </div>
       <CameraMamu/> {/* 화면 길이에 따라서 메뉴 디자인이 달라짐 */}
     </div>
