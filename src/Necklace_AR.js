@@ -5,6 +5,9 @@ import { JEELIZFACEFILTER, NN_4EXPR } from 'facefilter'
 import { JeelizThreeFiberHelper } from './faceFilter/JeelizThreeFiberHelper.js'
 import mergeImages from 'merge-images';
 
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import {Model as Head} from './model/Head.js' 
 // 얼굴 3D 모델 (목부분에는 목걸이 모델이 보이지 않기 위함)
 
@@ -16,8 +19,6 @@ import {Model as JashinNecklace} from './model/jashin_necklace' // 확인
 import {Model as ChristmasHat} from './model/ChristmasHat2.js' // 크리스마스 모자 (위치 수정 완료)
 import {Model as BeanieHat} from './model/BeanieHat.js' // 비니모자 (위치 수정 완료)
 import {Model as Hat1} from './model/Hat.js' // 처마가 넓은 모자 (위치 수정 완료)
-
-// 목걸이 3D 모델
 
 const _maxFacesDetected = 1 // max number of detected faces
 const _faceFollowers = new Array(_maxFacesDetected)
@@ -89,7 +90,6 @@ const FaceFollower2 = (props) => {
   ) 
 }
 
-
 let _threeFiber = null
 const DirtyHook = (props) => {
   _threeFiber = useThree()
@@ -99,14 +99,18 @@ const DirtyHook = (props) => {
 
 const compute_sizing = () => {
   // compute  size of the canvas:
-  const height = (window.innerHeight) * 0.50
-  const width = (window.innerWidth) * 0.50
+  const wheight = (window.innerHeight)
+  const wWidth = (window.innerWidth)
+
+  const height = Math.min(wWidth, wheight) 
+  const width = Math.min(wWidth, wheight)
+  const mode = (height === wheight) ? 0 : 1 // 0 : 웹 , 1 : 폰
 
   // compute position of the canvas:
   const top = 0
-  const left = (window.innerWidth) * 0.25
+  const left = (wWidth - width) / 2
   
-  return {width, height, top, left}
+  return {width, height, top, left, mode}
 }
 
 function App() {
@@ -178,7 +182,6 @@ function App() {
   const [visible2,setVisible2] = useState(true);
   const [visible3,setVisible3] = useState(true);
 
-  
   const Hats = [<Hat1/>,<BeanieHat/>,<ChristmasHat/>];
   const Necklace = [];
   const snapshot = useCallback(() => {
@@ -211,120 +214,124 @@ function App() {
   function GuidePAgeClick(e){
     window.location.href = "/GuidePage"
 }
-    
+  const CameraMamu = (props) => {
+    if (sizing.mode === 0) // 0 : 출력화면이 세로가 길 경우
+    { return (
+        <div>  {/* 메뉴 */}
+          <button className = "snap_button" style={
+            {position: 'fixed', zIndex: 2, 
+              height: '150px',
+              width: '150px', 
+              top : (window.innerHeight) / 2 - 75, 
+              left : (sizing.left) / 2 - 75}
+            } 
+            onClick={snapshot}> 
+            <FontAwesomeIcon icon = {faCamera} color="black" size="5x"/> </button> {/* 화면을 캡쳐하는 버튼 */}
+
+          <button className = "visible_button_1" style={
+            {position: 'fixed', zIndex: 2,
+              height: '150px',
+              width: '150px',
+              top : (window.innerHeight) * 0.05,
+              left : (window.innerWidth - (sizing.left) / 2 - 75)}
+            }
+            onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
+              if(visible1) {_temporary1 = 1; setVisible2(false);}
+              else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태 1"} </button> {/*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */}
+          
+          <button className = "visible_button_2" style={
+            {position: 'fixed', zIndex: 2,
+              height: '150px',
+              width: '150px',
+              top : (window.innerHeight) * 0.23,
+              left : (window.innerWidth - (sizing.left) / 2 - 75)}
+            }
+            onClick= {() => {setVisible1(!visible1)
+              if(visible1) {_temporary1 = 1; setVisible2(false);}
+              else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
+
+          <button className = "visible_button_3" style={
+            {position: 'fixed', zIndex: 2,
+            height: '150px',
+            width: '150px',
+            top : (window.innerHeight) * 0.8,
+            left : (window.innerWidth - (sizing.left) / 2 - 75)}
+          } onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> 
+          {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
+        
+          <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, top : window.innerHeight - 50}} onClick = {GuidePAgeClick}> 다음 페이지로 이동 </button>
+        </div>
+      )
+    }
+    else { // 1 : 출력화면이 가로가 길 경우
+      return (
+        <div>  {/* 메뉴 */}
+            <button className = "snap_button" style={
+              {position: 'fixed', zIndex: 2, 
+               height: '75px',
+               width: '75px', 
+               top : (sizing.height + 112.5), 
+               left : (window.innerWidth) / 2 - 35.5}
+              } 
+              onClick={snapshot}> 
+              <FontAwesomeIcon icon = {faCamera} color="black" size="5x"/> </button> {/* 화면을 캡쳐하는 버튼 */}
+
+            <button className = "visible_button_1" style={
+            {position: 'fixed', zIndex: 2,
+              height: '75px',
+              width: '75px',
+              top : (sizing.height + 37.5),
+              left : (window.innerWidth) * 0.05}
+            }
+            onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
+              if(visible1) {_temporary1 = 1; setVisible2(false);}
+              else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태 1"} </button> {/*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */}
+          
+            <button className = "visible_button_2" style={
+            {position: 'fixed', zIndex: 2,
+              height: '75px',
+              width: '75px',
+              top : (sizing.height + 37.5),
+              left : (window.innerWidth) * 0.35}
+            }
+            onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
+              if(visible1) {_temporary1 = 1; setVisible2(false);}
+              else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
+
+            <button className = "visible_button_3" style={
+            {position: 'fixed', zIndex: 2,
+            height: '75px',
+            width: '75px',
+            top : (sizing.height + 37.5),
+            left : (window.innerWidth) * 0.75}
+          } onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> 
+          {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
+            
+          <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, top : window.innerHeight - 50}} onClick = {GuidePAgeClick}> 다음 페이지로 이동 </button>
+        </div>
+      )
+    } 
+  }
+
   return (
-    <div>
-      <Canvas className='mirrorX' ref={canvasRef} style={{
+    <div id='camera_main' width = {window.innerWidth} height = {window.innerHeight}>
+      <div>  {/* 카메라 부분 */}
+      <Canvas className='camera' ref={canvasRef} style={{
+        position: 'fixed',
+        zIndex: 1,
+        ...sizing}} width = {sizing.width} height = {sizing.height} 
+      gl={{ preserveDrawingBuffer: true // allow image capture
+          }} updatedefaultcamera = "false">
+        <DirtyHook sizing={sizing} />
+        <FaceFollower faceIndex={0} expression={_expressions[0]} />
+      </Canvas>
+      <canvas className='camera' ref={camera} style={{
         position: 'fixed',
         zIndex: 1,
         ...sizing
-      }} 
-      width = {sizing.width} height = {sizing.height} 
-      gl={{ preserveDrawingBuffer: true // allow image capture
-      }}
-      updatedefaultcamera = "false">
-        <DirtyHook sizing={sizing} />
-
-        <FaceFollower faceIndex={0} expression={_expressions[0]} />
-       
-    </Canvas>
-  
-    <canvas className='mirrorX' ref={camera} style={{
-        position: 'fixed',
-        zIndex: 0,
-        ...sizing
-      }} width = {sizing.width} height = {sizing.height}
-    />
-    <img className = "snap" style={{
-        position: 'fixed',
-        zIndex: 1, // z축이 높아서 덮어씌워지게 보이는거 
-        top : (window.innerHeight) * 0.5,
-        left : (window.innerWidth) * 0.25
-      }} width = {sizing.width} height = {sizing.height} // 여기서 3d 모델만 저장된 이미지 출력 댐 
-      /> 
-
-    <canvas className = "snap" ref={pictureCanvasRef} style={{
-        position: 'fixed',
-        zIndex: 0,
-        top : (window.innerHeight) * 0.5,
-        left : (window.innerWidth) * 0.25
-      }} width = {sizing.width} height = {sizing.height} 
-      />
-
-    <button className = "snap_button" style={{
-      position: 'fixed',
-      zIndex: 2,
-      height: (window.innerWidth) * 0.2,
-      width: (window.innerWidth) * 0.2,
-      top : (window.innerHeight) * 0.4,
-      left : (window.innerWidth) * 0.025
-      }} onClick={snapshot}> </button>
-
-      
-      <button className = "snap_button" style={{
-        /*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */
-      position: 'fixed',
-      zIndex: 2,
-      height: (window.innerWidth) * 0.1,
-      width: (window.innerWidth) * 0.1,
-      top : (window.innerHeight) * 0.05,
-      left : (window.innerWidth) * 0.025
-      // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
-      }} onClick= {() => {
-        setVisible1(!visible1)
-        if(visible1)
-        {
-          _temporary1 = 1
-          setVisible2(false)
-        }
-        else
-        {
-          
-          _temporary1 = 0
-        }
-      }}>
-         {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태1"} </button>
-
-         <button className = "snap_button" style={{
-        /*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */
-      position: 'fixed',
-      zIndex: 2,
-      height: (window.innerWidth) * 0.1,
-      width: (window.innerWidth) * 0.1,
-      top : (window.innerHeight) * 0.23,
-      left : (window.innerWidth) * 0.025
-      // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
-      }} onClick= {() => {
-        setVisible2(!visible2)
-        if(visible2)
-        {
-          _temporary1 = 2
-          setVisible1(false)
-        }
-        else
-        {
-          _temporary1= 0
-        }
-      }}>
-         {visible2 ? "모자 보이는 상태 2" : "모자 숨겨진 상태2"} </button>
-
-
-      <button className = "snap_button" style={{
-      position: 'fixed',
-      zIndex: 2,
-      height: (window.innerWidth) * 0.1,
-      width: (window.innerWidth) * 0.1,
-      top : (window.innerHeight) * 0.8,
-      left : (window.innerWidth) * 0.025
-      }} onClick= {() => {
-        setVisible3(!visible3)
-        _temporary3 = visible3
-      }}> {visible3 ? "목걸이 보여진 상태2" : "목걸이 숨겨진 상태2"} </button>
-
-    <button className = "buttonshow" onClick = {GuidePAgeClick}>
-
-    다음 페이지로 이동 </button>
-      
+      }} width = {sizing.width} height = {sizing.height}/>
+      </div>
+      <CameraMamu/> {/* 화면 길이에 따라서 메뉴 디자인이 달라짐 */}
     </div>
   )  
 };

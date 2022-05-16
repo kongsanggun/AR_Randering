@@ -9,7 +9,11 @@ npm i facefilter
 npm i three
 npm i merge-images
 
-#지금 해야 할 일
+npm i @fortawesome/fontawesome-svg-core
+npm i @fortawesome/free-solid-svg-icons
+npm i @fortawesome/react-fontawesome
+
+# 지금 해야 할 일
 
 1. canvas 캡쳐링(상현)
 2. 버튼 프로토 이야기 한데로 on/off 기능 구현(창근)
