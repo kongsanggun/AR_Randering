@@ -7,7 +7,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
-    "@react-three/drei": "^9.8.2",
+    "@react-three/drei": "^9.9.0",
     "@react-three/fiber": "^8.0.16",
     "@tensorflow-models/coco-ssd": "^2.2.2",
     "@tensorflow/tfjs": "^3.17.0",

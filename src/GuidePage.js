@@ -34,59 +34,57 @@ const GuidePage = () => {
         window.location.href = "Necklace_AR"
     }
 
-    if (sizing.mode === 0) // 0 : 출력화면이 세로가 길 경우
-    { 
+    if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
         return (
-            <div className="App-header">
-                <div className = "Title_img" style={{position: 'fixed', zIndex: 2, top : 0, left : sizing.left, width : sizing.width}} > 
-                    <h1> 사진 미리보기 </h1>
+            <div className="preview_0" style={{position: 'fixed', width : "100%", height : "100%"}}>
+
+                <div className = "Title_img" style={{position: 'fixed', zIndex: 1, top : 0, left : sizing.left, width : sizing.width}} > 
+                    <div style={{padding: "2% 1% 2% 5%", fontSize : '30px'}} > 사진 미리보기0 </div>
+                    <button className = "back_button" style={{zIndex: 2, width : "auto", height : "auto", padding: "1% 5% 1% 5%"}} onClick = {NecklaceClick}> 
+                    <FontAwesomeIcon icon = {faArrowLeft} color="white" size = "3x"/> </button>
                 </div>
-                <img src="08c3d43117adf478.jpg" 
-                style={{position: 'fixed', zIndex: 1,...sizing}} 
-                width = {sizing.width} height = {sizing.height} />
+
+                <img src="08c3d43117adf478.jpg" style={{position: 'fixed', left : sizing.left}} width = {sizing.width} height = {sizing.height}/>
                 
-                <div className = "Link" style={{position: 'fixed', zIndex: 2, top : (window.innerHeight) - 225, left : (window.innerWidth) - 400}}>
-                    <h1>Zepeto</h1>
-                    <img src = "btnG_icon_circle.png" 
-                    style={{height: '100px', width: '100px'}}
-                    onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
+                <div className = "Link_list_0" style={{zIndex: 2, height: "auto", width: sizing.width, left : sizing.left, backgroundColor : "rgba(0,0,0,0.5)"}}>
+                    <div className = "Link" style={{zIndex: 2, width : "auto", height: "auto"}}>
+                        <img src = "btnG_icon_square.png" 
+                        style={{height: window.innerHeight * 0.05, width: window.innerHeight * 0.05, maxHeight : '75px', maxWidth : '75px', minHeight : '45px', minWidth : '45px', paddingBottom : '1.5%'}}
+                        onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
+                        Zepeto
+                    </div>
+                    <div className = "Link" style={{zIndex: 2, width : "auto", height: "auto"}}>
+                        <img src = "kakaolink_btn_medium.png"style = {{height: window.innerHeight * 0.05, width: window.innerHeight * 0.05, maxHeight : '75px', maxWidth : '75px', minHeight : '45px', minWidth : '45px', paddingBottom : '1.5%' }} />
+                        SnapChat
+                    </div>
                 </div>
-                
-                <div className = "Link" style={{position: 'fixed', zIndex: 2, top : (window.innerHeight) - 225, left : (window.innerWidth) - 200}}>
-                    <h1>SnapChat</h1>
-                    <img src = "kakaolink_btn_medium.png" 
-                    style = {{height: '100px', width: '100px'}} />
-                </div>
-                <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, top : 0, left : (window.innerWidth) - 75}} onClick = {NecklaceClick}> 
-                <FontAwesomeIcon icon = {faArrowLeft} size="5x"/> </button>
+
             </div>
-      )
+        )
     }
-    else { // 1 : 출력화면이 가로가 길 경우
+    else { // 1 : 출력화면이 세로가 길 경우
       return (
-        <div className="App-header">
-            <div className = "Title_img" style={{position: 'fixed', zIndex: 2, top : sizing.height - 90, left : sizing.left, width : sizing.width }} > 
-                <h1> 사진 미리보기 </h1>
+        <div className="preview" style={{position: 'fixed', zIndex: 2, top : 0, width : "100wh", height : "100vh"}}>
+            <div className = "Title_img" style={{zIndex: 2, width : "100%", height : "8%"}} > 
+                    <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}} > 사진 미리보기1 </div>
+                    <button className = "back_button" style={{width : "auto", height : "auto", padding: "1% 5% 1% 5%"}} onClick = {NecklaceClick}> 
+                    <FontAwesomeIcon icon = {faArrowLeft} color="white" size = "3x"/> </button>
             </div>
-            <img src="08c3d43117adf478.jpg" 
-            style={{position: 'fixed', zIndex: 1,...sizing}} 
-            width = {sizing.width} height = {sizing.height} />
-                
-            <div className = "Link" style={{position: 'fixed', zIndex: 2, top : (window.innerHeight) - 225, left : (window.innerWidth) - 350}}>
-                <h1>Zepeto</h1>
-                <img src = "btnG_icon_circle.png" 
-                style={{height: '100px', width: '100px'}}
-                onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
-            </div>
-                
-            <div className = "Link" style={{position: 'fixed', zIndex: 2, top : (window.innerHeight) - 225, left : (window.innerWidth) - 200}}>
-                <h1>SnapChat</h1>
-                <img src = "kakaolink_btn_medium.png" 
-                style = {{height: '100px', width: '100px'}} />
-            </div>
-            
-            <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, top : 0, left : (window.innerWidth) - 75}} onClick = {NecklaceClick}> 
-                <FontAwesomeIcon icon = {faArrowLeft} size="5x"/> </button>
+
+            <img src="08c3d43117adf478.jpg" width = {sizing.width} height = {sizing.height}/>
+
+            <div className = "Link_list" style={{zIndex: 2, height: "auto", width: "100%"}}>
+                <div className = "Link" style={{zIndex: 2, width : "auto", height: "auto"}}>
+                    <img src = "btnG_icon_square.png" 
+                    style={{height: window.innerHeight * 0.05, width: window.innerHeight * 0.05, maxHeight : '75px', maxWidth : '75px', minHeight : '45px', minWidth : '45px', paddingBottom : '1.5%'}}
+                    onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
+                    Zepeto
+                </div>
+                <div className = "Link" style={{zIndex: 2, width : "auto", height: "auto"}}>
+                    <img src = "kakaolink_btn_medium.png"style = {{height: window.innerHeight * 0.05, width: window.innerHeight * 0.05, maxHeight : '75px', maxWidth : '75px', minHeight : '45px', minWidth : '45px', paddingBottom : '1.5%' }} />
+                    SnapChat
+                </div>
+            </div> 
         </div>
       )
     }

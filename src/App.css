@@ -16,13 +16,11 @@
 #camera_main {
   background-color: rgb(64, 64, 64);
   display: flex;
-  z-index: -1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   min-width: 100vw;
   min-height: 100vh;
-}
-
-.camera {
-  border: 1px solid yellow;
 }
 
 .buttontransfer{
@@ -36,52 +34,116 @@
   font-size: 20px;
   margin-bottom: 10px;
 }
-.camera_mamu {
-  background: rgba(0, 0, 0, 0.5);
-  border: 0px solid rgb(0, 0, 0);
-  color: rgb(0, 0, 0);
-  margin-bottom: 0px;
-
-  top: 80vh;
-  left: 20%;
-  width: 100%;
-  height: 20%;
+.camera_mamu_0 {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
+.camera_mamu {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8%;
+}
+
+.snap_0 {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2vw;
+}
+.snap {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
 .snap_button {
   background: rgb(255, 255, 255);
   border-radius: 100%;
-  border: 0px solid rgb(0, 0, 0);
-  margin-top: 1rem;
-  color: rgb(255, 255, 255);
-  margin-bottom: 10px;
-}
-.snap_button_mini {
-  background: transparent;
-  border-radius: 1.5px;
-  border: 1px solid rgb(0, 0, 0);
-  margin-top: 0.5rem;
+  border: 0px;
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 75px;
+  min-height: 75px;
   color: rgb(0, 0, 0);
-  font-size: 10px;
-  margin-bottom: 5px;
+}
+
+.list_0{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 1vw;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .visible_button_1 {
   background: rgb(255, 255, 255, 0.5);
   border-radius: 3%;
   border: 1px solid rgb(255, 0, 0);
+  padding : 0px 0px 0px 0px;
   color: rgb(255, 255, 255);
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 75px;
+  min-height: 75px;
 }
 .visible_button_2 {
   background: rgb(255, 255, 255, 0.5);
   border-radius: 3%;
   border: 1px solid rgb(0, 255, 0);
+  padding : 0px 0px 0px 0px;
   color: rgb(255, 255, 255);
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 75px;
+  min-height: 75px;
 }
 .visible_button_3 {
   background: rgb(255, 255, 255, 0.5);
   border-radius: 3%;
   border: 1px solid rgb(0, 0, 255);
+  padding : 0px 0px 0px 0px;
   color: rgb(255, 255, 255);
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 75px;
+  min-height: 75px;
+}
+
+.preview_0 {
+  background-color: rgb(64, 64, 64);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+}
+
+.preview {
+  background-color: rgb(64, 64, 64);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
 }
 
 .App-header {
@@ -98,23 +160,48 @@
   color: #61dafb;
 }
 
+.Link_list_0 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.Link_list {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .Link {
   color: white;
-  font-size: 18px;
+  font-size: 15px;
+  display: flex;
   text-align: center;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding : 0px 1.5% 0px 1.5%;
 }
 
 .Title_img {
   background-color: rgba(0, 0, 0, 0.5);
+  border: 0px;
   color: white;
-  font-size: 18px;
-  text-align: center;
-  flex-direction: column;
+
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.back_button {
+  background-color: rgba(255, 0, 0, 0);
+  border: 0px;
 }
 
 @keyframes App-logo-spin {
