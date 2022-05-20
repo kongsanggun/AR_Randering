@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react";
 import "./App.css";
-
-
+import { useScript } from "./hooks";
 const Home = () => {
 
     function EarringClick(e){
@@ -13,7 +12,8 @@ const Home = () => {
     function NecklaceClick(e){
         window.location.href = "/Necklace_AR"
     }
-    
+
+
     return (
       <div className="App">
       <header className="App-header">
@@ -29,6 +29,9 @@ const Home = () => {
 
         <button className = "buttontransfer"
             onClick={NecklaceClick} > 작업중인 페이지! </button>
+        
+
+        
         </header>
       </div>
     );
