@@ -7,7 +7,7 @@ import mergeImages from 'merge-images';
 
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import axios from 'axios';
 import {Model as Head} from './model/Head.js' 
 // 얼굴 3D 모델 (목부분에는 목걸이 모델이 보이지 않기 위함)
 
@@ -19,6 +19,7 @@ import {Model as JashinNecklace} from './model/jashin_necklace' // 확인
 import {Model as ChristmasHat} from './model/ChristmasHat2.js' // 크리스마스 모자 (위치 수정 완료)
 import {Model as BeanieHat} from './model/BeanieHat.js' // 비니모자 (위치 수정 완료)
 import {Model as Hat1} from './model/Hat.js' // 처마가 넓은 모자 (위치 수정 완료)
+//import { LineStrip } from 'three';
 
 const _maxFacesDetected = 1 // max number of detected faces
 const _faceFollowers = new Array(_maxFacesDetected)
@@ -111,7 +112,7 @@ function App() {
   _expressions = []
 
   const [sizing, setSizing] = useState(compute_sizing())
-  const [isInitialized] = useState(true)
+  const [isInitialized,setisInitialized] = useState(true)
 
   let _timerResize = null
   const handle_resize = () => {
@@ -167,6 +168,28 @@ function App() {
       console.log('LOST')
     }
   }
+  const getBase64StringFromDataURL = (dataURL) => {
+    dataURL.replace('data:', '').replace(/^.+,/, '')
+  };
+
+  const dataURLtoFile = (dataurl, fileName) => {
+
+    var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], fileName, { type: mime });
+  }
+  const todayTime = () => {
+    let now = new Date().toString();
+    return now;
+  }
 
   const camera = useRef(null) // 카메라 입력
   const canvasRef = useRef(null) // 3D 모델 출력
@@ -174,17 +197,41 @@ function App() {
   const [visible1,setVisible1] = useState(true);
   const [visible2,setVisible2] = useState(true);
   const [visible3,setVisible3] = useState(true);
+  const [imageName, setImageName] = useState('');
+    const [convertedFile,setConvertedFile] = useState("");
 
   const snapshot = useCallback(() => {
     const canvas = pictureCanvasRef.current;
+
+    canvas.getContext('2d').clearRect(0,0,sizing.width, sizing.height);
     canvas.getContext('2d').drawImage(canvasRef.current, 0, 0, sizing.width, sizing.height);
-    
+
+    let nowimageName = todayTime();
+    setImageName(nowimageName);
+
     mergeImages([
       camera.current.toDataURL('image/png'),
       canvas.toDataURL('image/png'),
-    ]).then(b64 => document.getElementById('preview').src = b64) // 이미지 병합
-  })
+    ]).then((b64) => {
+      document.getElementById('preview').src = b64;
+      console.log(b64);
+      const convertedFile = dataURLtoFile(b64, todayTime() + ".png");
+      console.warn(convertedFile);
+      const data = new FormData();
+      data.append('file', convertedFile);
 
+      let url = "/uploader";
+
+      axios.post(url, data, {
+        // 주소와 formdata를 posting 한다
+     })
+     .then(res => { 
+       //상태 출력
+         console.warn(res);
+     });
+    })
+  })
+  
   useEffect(() => {
     window.addEventListener('resize', handle_resize)
     window.addEventListener('orientationchange', handle_resize)

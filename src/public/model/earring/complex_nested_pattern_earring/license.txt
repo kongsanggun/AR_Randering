@@ -1,0 +1,11 @@
+Model Information:
+* title:	Large earring with complex nested pattern
+* source:	https://sketchfab.com/3d-models/large-earring-with-complex-nested-pattern-2ac1e9753c954144955909b9b1308b73
+* author:	mayamurad (https://sketchfab.com/mayamurad)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Large earring with complex nested pattern" (https://sketchfab.com/3d-models/large-earring-with-complex-nested-pattern-2ac1e9753c954144955909b9b1308b73) by mayamurad (https://sketchfab.com/mayamurad) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

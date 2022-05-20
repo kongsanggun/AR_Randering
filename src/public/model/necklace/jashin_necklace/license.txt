@@ -1,0 +1,11 @@
+Model Information:
+* title:	Jashin Necklace
+* source:	https://sketchfab.com/3d-models/jashin-necklace-028988c5cc7b49c0addeb93bf3a6ff0f
+* author:	SimpleMan (https://sketchfab.com/postal1443)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Jashin Necklace" (https://sketchfab.com/3d-models/jashin-necklace-028988c5cc7b49c0addeb93bf3a6ff0f) by SimpleMan (https://sketchfab.com/postal1443) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

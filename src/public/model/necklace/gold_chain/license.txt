@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gold Chain
+* source:	https://sketchfab.com/3d-models/gold-chain-228fb92aea534a8dbf15c42c2d25f54b
+* author:	bashar-ALghaneem (https://sketchfab.com/bashar-ALghaneem)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gold Chain" (https://sketchfab.com/3d-models/gold-chain-228fb92aea534a8dbf15c42c2d25f54b) by bashar-ALghaneem (https://sketchfab.com/bashar-ALghaneem) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

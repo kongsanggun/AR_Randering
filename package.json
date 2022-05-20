@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
+  "proxy": "http://127.0.0.1:5000/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -24,6 +25,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
     "react-webcam": "^7.0.1",
+    "start": "^5.1.0",
     "styled-components": "^5.3.5",
     "three": "^0.139.2",
     "web-vitals": "^2.1.4"

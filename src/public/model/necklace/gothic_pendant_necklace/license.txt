@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gothic Pendant Necklace
+* source:	https://sketchfab.com/3d-models/gothic-pendant-necklace-da1b584886b94a7fb9c98dd642a319b3
+* author:	cedeon (https://sketchfab.com/cedeon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gothic Pendant Necklace" (https://sketchfab.com/3d-models/gothic-pendant-necklace-da1b584886b94a7fb9c98dd642a319b3) by cedeon (https://sketchfab.com/cedeon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

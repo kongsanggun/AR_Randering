@@ -38,7 +38,6 @@ def uploader_file():
     f = request.files['file']
     f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
 
-    
     return 'file uploaded successfully'
 
 #bring pulic image by list 

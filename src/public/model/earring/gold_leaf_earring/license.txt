@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gold leaf Earring
+* source:	https://sketchfab.com/3d-models/gold-leaf-earring-64c4c78a861d45a28aa1b78873b02d14
+* author:	DineshThennarasan (https://sketchfab.com/dineshthennarasan)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gold leaf Earring" (https://sketchfab.com/3d-models/gold-leaf-earring-64c4c78a861d45a28aa1b78873b02d14) by DineshThennarasan (https://sketchfab.com/dineshthennarasan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
