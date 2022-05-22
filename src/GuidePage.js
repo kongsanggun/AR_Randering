@@ -62,15 +62,15 @@ const GuidePage = () => {
                 <img src="08c3d43117adf478.jpg" style={{position: 'fixed', left : sizing.left}} width = {sizing.width} height = {sizing.height}/>
                 
                 <div className = "Link_list" style={{width: sizing.width, left : sizing.left, backgroundColor : "rgba(0,0,0,0.5)"}}>
-                <button onClick = {handleKakaoButton}>카카오로 공유</button>
                     <div className = "Link">
                         <img className="icons" src = "btnG_icon_square.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05}
                         onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
-                        Zepeto
+                        Naver
                     </div>
                     <div className = "Link">
-                        <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} />
-                        SnapChat
+                        <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} 
+                        onClick = {handleKakaoButton}/>
+                        Kakao
                     </div>
                     
                 </div>
@@ -95,9 +95,9 @@ const GuidePage = () => {
                     Naver
                 </div>
                 <div className = "Link">
-                    <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} />
-                    
-                    
+                    <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} 
+                    onClick = {handleKakaoButton}/>
+                    Kakao
                 </div>
 
             </div> 
