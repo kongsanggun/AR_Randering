@@ -4,10 +4,6 @@ import { Canvas, useFrame, useThree} from '@react-three/fiber'
 import { JEELIZFACEFILTER, NN_4EXPR } from 'facefilter'
 import { JeelizThreeFiberHelper } from './faceFilter/JeelizThreeFiberHelper.js'
 
-import {Model as WizardsHat} from './model/WizardsHat.js' // 마법사 모자 (위치 수정 완료)
-import {Model as BucketHat} from './model/BucketHat.js' // '엄' 모자 (위치 수정 완료)
-import {Model as ChristmasHat} from './model/ChristmasHat2.js' // 크리스마스 모자 (위치 수정 완료)
-import {Model as BeanieHat} from './model/BeanieHat.js' // 비니모자 (위치 수정 완료)
 import {Model as Hat1} from './model/Hat.js' // 처마가 넓은 모자 (위치 수정 완료)
 // 모자 3D 모델
 

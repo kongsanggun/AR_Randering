@@ -53,26 +53,23 @@ const GuidePage = () => {
 
     if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
         return (
-            <div className="preview_0" style={{position: 'fixed', width : "100%", height : "100%"}}>
-
-                <div className = "Title_img" style={{position: 'fixed', zIndex: 1, top : 0, left : sizing.left, width : sizing.width}} > 
+            <div className="preview_0">
+                <div className = "Title_img_0" style={{left : sizing.left, width : sizing.width}} > 
                     <div style={{padding: "2% 1% 2% 5%", fontSize : '30px'}} > 사진 미리보기0 </div>
-                    <button className = "back_button" style={{zIndex: 2, width : "auto", height : "auto", padding: "1% 5% 1% 5%"}} onClick = {NecklaceClick}> 
-                    <FontAwesomeIcon icon = {faArrowLeft} color="white" size = "3x"/> </button>
+                    <button className = "back_button" onClick = {NecklaceClick}> <FontAwesomeIcon icon = {faArrowLeft} color="white" size = "3x"/> </button>
                 </div>
                 
                 <img src="08c3d43117adf478.jpg" style={{position: 'fixed', left : sizing.left}} width = {sizing.width} height = {sizing.height}/>
                 
-                <div className = "Link_list_0" style={{zIndex: 2, height: "auto", width: sizing.width, left : sizing.left, backgroundColor : "rgba(0,0,0,0.5)"}}>
+                <div className = "Link_list" style={{width: sizing.width, left : sizing.left, backgroundColor : "rgba(0,0,0,0.5)"}}>
                 <button onClick = {handleKakaoButton}>카카오로 공유</button>
-                    <div className = "Link" style={{zIndex: 2, width : "auto", height: "auto"}}>
-                        <img src = "btnG_icon_square.png" 
-                        style={{height: window.innerHeight * 0.05, width: window.innerHeight * 0.05, maxHeight : '75px', maxWidth : '75px', minHeight : '45px', minWidth : '45px', paddingBottom : '1.5%'}}
+                    <div className = "Link">
+                        <img className="icons" src = "btnG_icon_square.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05}
                         onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
                         Zepeto
                     </div>
-                    <div className = "Link" style={{zIndex: 2, width : "auto", height: "auto"}}>
-                        <img src = "kakaolink_btn_medium.png"style = {{height: window.innerHeight * 0.05, width: window.innerHeight * 0.05, maxHeight : '75px', maxWidth : '75px', minHeight : '45px', minWidth : '45px', paddingBottom : '1.5%' }} />
+                    <div className = "Link">
+                        <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} />
                         SnapChat
                     </div>
                     
@@ -83,29 +80,26 @@ const GuidePage = () => {
     }
     else { // 1 : 출력화면이 세로가 길 경우
       return (
-        <div className="preview" style={{position: 'fixed', zIndex: 2, top : 0, width : "100wh", height : "100vh"}}>
-            <div className = "Title_img" style={{zIndex: 2, width : "100%", height : "8%"}} > 
-                    <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}} > 사진 미리보기1 </div>
-                    <button className = "back_button" style={{width : "auto", height : "auto", padding: "1% 5% 1% 5%"}} onClick = {NecklaceClick}> 
-                    <FontAwesomeIcon icon = {faArrowLeft} color="white" size = "3x"/> </button>
+        <div className="preview">
+            <div className = "Title_img"> 
+                <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}} > 사진 미리보기1 </div>
+                <button className = "back_button" onClick = {NecklaceClick}> <FontAwesomeIcon icon = {faArrowLeft} color="white" size = "3x"/> </button>
             </div>
 
             <img src="08c3d43117adf478.jpg" width = {sizing.width} height = {sizing.height}/>
 
-            <div className = "Link_list" style={{zIndex: 2, height: "auto", width: "100%"}}>
-                <div className = "Link" style={{zIndex: 2, width : "auto", height: "auto"}}>
-                    <img src = "btnG_icon_square.png" 
-                    style={{height: window.innerHeight * 0.05, width: window.innerHeight * 0.05, maxHeight : '75px', maxWidth : '75px', minHeight : '45px', minWidth : '45px', paddingBottom : '1.5%'}}
+            <div className = "Link_list" style={{width: "100vw"}}>
+                <div className = "Link">
+                    <img className="icons" src = "btnG_icon_square.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05}
                     onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
                     Naver
                 </div>
-                <div className = "Link" style={{zIndex: 2, width : "auto", height: "auto"}}>
-                    <img src = "kakaolink_btn_medium.png"style = {{height: window.innerHeight * 0.05, width: window.innerHeight * 0.05, maxHeight : '75px', maxWidth : '75px', minHeight : '45px', minWidth : '45px', paddingBottom : '1.5%' }} />
+                <div className = "Link">
+                    <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} />
                     
                     
                 </div>
-               
-              
+
             </div> 
             
         </div>

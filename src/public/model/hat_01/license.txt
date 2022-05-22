@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hat 01  .::RAWscan::.
+* source:	https://sketchfab.com/3d-models/hat-01-rawscan-bbed960e1cfd4ede8d0cf4755532865b
+* author:	Andrea Spognetta (Spogna) (https://sketchfab.com/spogna)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hat 01  .::RAWscan::." (https://sketchfab.com/3d-models/hat-01-rawscan-bbed960e1cfd4ede8d0cf4755532865b) by Andrea Spognetta (Spogna) (https://sketchfab.com/spogna) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

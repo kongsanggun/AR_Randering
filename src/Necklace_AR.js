@@ -16,9 +16,11 @@ import {Model as Earring} from './model/Earring' // 완료
 import {Model as GoldNecklace} from './model/gold_necklace' // 확인
 import {Model as GothicPendant} from './model/gothic_pendant' // 확인
 import {Model as JashinNecklace} from './model/jashin_necklace' // 확인
-import {Model as ChristmasHat} from './model/ChristmasHat2.js' // 크리스마스 모자 (위치 수정 완료)
-import {Model as BeanieHat} from './model/BeanieHat.js' // 비니모자 (위치 수정 완료)
-import {Model as Hat1} from './model/Hat.js' // 처마가 넓은 모자 (위치 수정 완료)
+
+import {Model as Glasses} from './model/glasses' // 완료
+import {Model as Glasses2} from './model/glasses2' // 완료
+import {Model as Glasses3} from './model/glasses3' // 완료
+
 //import { LineStrip } from 'three';
 
 const _maxFacesDetected = 1 // max number of detected faces
@@ -41,7 +43,7 @@ const FaceFollower2 = (props) => {
     <object3D ref={objRef}>
         <Suspense fallback={null}>
           <ambientLight/>
-          <ChristmasHat/>
+          <Glasses3/>
       </Suspense>
     </object3D>
   )}
@@ -55,16 +57,7 @@ const FaceFollower0 = (props) => {
 const FaceFollower = (props) => {
     // This reference will give us direct access to the mesh
     const objRef = useRef()
-  
-    function SelectHat(){
-      switch(_temporary1){
-        case 1 : return <Hat1/>
-        case 2 : return <BeanieHat/>
-        case 3 : return <ChristmasHat/>
-        default:
-          return null;
-      }
-  }
+
     useEffect(() => {
       const threeObject3D = objRef.current
       _faceFollowers[props.faceIndex] = threeObject3D  
@@ -76,7 +69,6 @@ const FaceFollower = (props) => {
       <object3D ref={objRef} >
         <Suspense fallback={null}>
         <ambientLight/>
-         {SelectHat()}
         {_temporary2 && <GoldChain/> }
         <Head/>
         </Suspense>
@@ -255,7 +247,7 @@ function App() {
 
   if (sizing.mode === 0) { // 0 : 출력화면이 가로가 길 경우
     return (
-      <div id='camera_main' style={{position: 'fixed', zIndex: 2, top : 0, width : "100wh", height : "100vh"}}>     
+      <div id='camera_main'>     
         <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
             gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
               <DirtyHook sizing={sizing} />
@@ -265,25 +257,25 @@ function App() {
       <img id = "preview" style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
       <canvas className = "snap" ref={pictureCanvasRef} style={{position: 'absolute', zIndex: -1, ...sizing}} width = {sizing.width} height = {sizing.height} /> {/* 모델 저장 */}
 
-      <div className = "camera_mamu_0" style={{position: 'absolute', height: "100%", width: "auto", top : 0, left : (sizing.left + sizing.width)}}>  {/* 메뉴 */}
+      <div className = "camera_mamu_0" style={{top : 0, left : (sizing.left + sizing.width)}}>  {/* 메뉴 */}
       
         <div style={{zIndex: 2, height: "100%", width: "1.5vw", background : "rgba(0,0,255,0)" }}> </div>
 
-        <div className = "list_0" style={{zIndex: 2, height: "100wh", width: "auto"}}> {/* 모델 리스트 */}
-          <button className = "visible_button_1" style={{zIndex: 2, height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}}
+        <div className = "list_0"> {/* 모델 리스트 */}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(255, 0, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태 1"} </button> {/*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */}
-          <button className = "visible_button_2" style={{zIndex: 2, height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 255, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
-          <button className = "visible_button_3" style={{zIndex: 2, height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}
             onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
         </div>
         
-        <div className = "snap_0" style={{zIndex: 2, height: "100wh", width: "auto"}}> {/* 버튼 리스트 */}
-          <button className = "snap_button" style={{zIndex: 2, height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick={snapshot}>
+        <div className = "snap_0"> {/* 버튼 리스트 */}
+          <button className = "snap_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick={snapshot}>
           </button> {/* 화면을 캡쳐하는 버튼 */}
         </div>
 
@@ -296,8 +288,8 @@ function App() {
 
   else {
     return (
-    <div id='camera_main' style={{position: 'fixed', zIndex: 2, top : 0, width : "100wh", height : "100vh"}}>  
-      <div className = "Title_img" style={{zIndex: 2, width : "100%", height : "8%"}} > 
+    <div id='camera_main'>  
+      <div className = "Title_img"> 
         <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}}/>
       </div>
       
@@ -310,25 +302,25 @@ function App() {
       <img id = "preview" style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
       <canvas className = "snap" ref={pictureCanvasRef} style={{position: 'absolute', zIndex: -1, ...sizing}} width = {sizing.width} height = {sizing.height} /> {/* 모델 저장 */}
       
-      <div className = "camera_mamu" style={{position: 'absolute', height: "auto", width: "100%", top : sizing.height}}>  {/* 메뉴 */}
+      <div className = "camera_mamu" style={{top : sizing.height}}>  {/* 메뉴 */}
 
         <div style={{zIndex: 2, height: "4vh", width: "100%", background : "rgba(0,0,255,0)" }}> </div>
 
-        <div className = "list" style={{zIndex: 2, height: "auto", width: "100%"}}> {/* 모델 리스트 */}
-          <button className = "visible_button_1" style={{zIndex: 2, height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}}
+        <div className = "list"> {/* 모델 리스트 */}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(255, 0, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태 1"} </button> {/*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */}
-          <button className = "visible_button_2" style={{zIndex: 2, height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 255, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
-          <button className = "visible_button_3" style={{zIndex: 2, height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}
             onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
         </div>
         
-        <div className = "snap" style={{zIndex: 2, height: "auto", width: "100wh"}}> {/* 버튼 리스트 */}
-          <button className = "snap_button" style={{zIndex: 2, height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick={snapshot}>
+        <div className = "snap"> {/* 버튼 리스트 */}
+          <button className = "snap_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick={snapshot}>
           </button> {/* 화면을 캡쳐하는 버튼 */}
         </div>
 
