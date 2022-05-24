@@ -4,6 +4,7 @@ import KakaoShareButton from "./KakaoShare";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useScript } from "./hooks";
+import Images from "./public/17a6ac053b34cc9b9.jpg";
 const compute_sizing = () => {
     // compute  size of the canvas:
     const wheight = (window.innerHeight)
@@ -45,8 +46,13 @@ const GuidePage = () => {
 
     const currentUrl = window.location.href;
     const handleKakaoButton = () => {
-        window.Kakao.Link.sendScrap({
-            requestUrl: currentUrl,
+        window.Kakao.Link.createTalkLinkButton({
+              image: {    
+                          src: Images,           
+                           width: '300',           
+                            height: '200'        
+                        },
+
         });
     };
     
