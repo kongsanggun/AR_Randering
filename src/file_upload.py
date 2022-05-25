@@ -1,5 +1,6 @@
+import mimetypes
 import os
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, send_file, session
 from werkzeug.utils import secure_filename
 import logging
 import imghdr
@@ -20,9 +21,10 @@ def hello():
 # test communicate
 @app.route('/api')
 def hellos():
-    return{
-        'hola' : "oh yeah"
-    }
+    return "http://127.0.0.1:5000/api/08c3d43117adf478_copy.jpg"
+
+
+
 # change image file how much big or not
 def validate_image(stream):
     header = stream.read(512)  # 512 bytes should be enough for a header check
@@ -58,17 +60,11 @@ def bring_data_image():
 
 
 #api testing data
-@app.route('/data')
-def User_data():
-    return {
-        'Name' : "hello",
-        'Age' : "22",
-        "Date" : "x",
-        "Cost" : "1000",
-    }
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 
 

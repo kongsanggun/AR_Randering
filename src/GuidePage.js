@@ -44,15 +44,42 @@ const GuidePage = () => {
 		}
 	}, [status]);	
 
-    const currentUrl = window.location.href;
     const handleKakaoButton = () => {
-        window.Kakao.Link.createTalkLinkButton({
-              image: {    
-                          src: Images,           
-                           width: '300',           
-                            height: '200'        
-                        },
-
+        window.Kakao.Link.createDefaultButton({
+            container : '#create-kakao-link-btn',
+            objectType: 'feed',
+    content: {
+      title: '딸기 치즈 케익',
+      description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+      imageUrl:
+        'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+      link: {
+        mobileWebUrl: 'https://developers.kakao.com',
+        webUrl: 'https://developers.kakao.com',
+      },
+    },
+    
+    social: {
+      likeCount: 286,
+      commentCount: 45,
+      sharedCount: 845,
+    },
+    buttons: [
+      {
+        title: '웹으로 보기',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: 'http://localhost:5000/api',
+        },
+      },
+      {
+        title: '앱으로 보기',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: 'https://developers.kakao.com',
+        },
+      },
+    ],
         });
     };
     
@@ -73,7 +100,7 @@ const GuidePage = () => {
                         onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
                         Naver
                     </div>
-                    <div className = "Link">
+                    <div id = "create-kakao-link-btn" className = "Link">
                         <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} 
                         onClick = {handleKakaoButton}/>
                         Kakao
@@ -86,6 +113,7 @@ const GuidePage = () => {
     }
     else { // 1 : 출력화면이 세로가 길 경우
       return (
+          
         <div className="preview">
             <div className = "Title_img"> 
                 <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}} > 사진 미리보기1 </div>
@@ -100,8 +128,9 @@ const GuidePage = () => {
                     onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>
                     Naver
                 </div>
-                <div className = "Link">
-                    <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} 
+                <div  className = "Link">
+  
+                    <img id = "create-kakao-link-btn" className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} 
                     onClick = {handleKakaoButton}/>
                     Kakao
                 </div>

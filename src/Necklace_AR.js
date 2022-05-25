@@ -248,7 +248,7 @@ function App() {
   if (sizing.mode === 0) { // 0 : 출력화면이 가로가 길 경우
     return (
       <div id='camera_main'>     
-        <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
+        <Canvas  ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
             gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
               <DirtyHook sizing={sizing} />
               <FaceFollower2 faceIndex={0} expression={_expressions[0]} />
@@ -293,7 +293,7 @@ function App() {
         <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}}/>
       </div>
       
-      <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
+      <Canvas  ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
           gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
             <DirtyHook sizing={sizing} />
             <FaceFollower2 faceIndex={0} expression={_expressions[0]} />
