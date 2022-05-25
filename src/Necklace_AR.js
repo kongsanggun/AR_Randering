@@ -243,12 +243,10 @@ function App() {
 
   function GuidePAgeClick(e){window.location.href = "/GuidePage"}
 
-  console.log(sizing.mode)
-
   if (sizing.mode === 0) { // 0 : 출력화면이 가로가 길 경우
     return (
       <div id='camera_main'>     
-        <Canvas  ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
+        <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
             gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
               <DirtyHook sizing={sizing} />
               <FaceFollower2 faceIndex={0} expression={_expressions[0]} />
@@ -261,17 +259,24 @@ function App() {
       
         <div style={{zIndex: 2, height: "100%", width: "1.5vw", background : "rgba(0,0,255,0)" }}> </div>
 
-        <div className = "list_0"> {/* 모델 리스트 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(255, 0, 0)"}}
+        <div className = "list_0" style={{width: "auto", height: "100vh", overflow : "auto"}}> {/* 모델 리스트 */}
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(255, 0, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태 1"} </button> {/*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 255, 0)"}}
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 255, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}
             onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
+
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
         </div>
         
         <div className = "snap_0"> {/* 버튼 리스트 */}
@@ -293,7 +298,7 @@ function App() {
         <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}}/>
       </div>
       
-      <Canvas  ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
+      <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
           gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
             <DirtyHook sizing={sizing} />
             <FaceFollower2 faceIndex={0} expression={_expressions[0]} />
@@ -306,7 +311,7 @@ function App() {
 
         <div style={{zIndex: 2, height: "4vh", width: "100%", background : "rgba(0,0,255,0)" }}> </div>
 
-        <div className = "list"> {/* 모델 리스트 */}
+        <div className = "list" style={{width: "auto", height: "auto", overflow : "auto"}}> {/* 모델 리스트 */}
           <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(255, 0, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
@@ -317,6 +322,13 @@ function App() {
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
           <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}
             onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
+
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
         </div>
         
         <div className = "snap"> {/* 버튼 리스트 */}
