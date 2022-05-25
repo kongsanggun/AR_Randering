@@ -87,14 +87,14 @@ const GuidePage = () => {
     if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
         return (
             <div className="preview_0">
-                <div className = "Title_img_0" style={{left : sizing.left, width : sizing.width}} > 
+                <div className = "Title_img_0" style={{position: 'absolute', left : sizing.left * (window.innerWidth / sizing.wWidth), width : sizing.width}} > 
                     <div style={{padding: "2% 1% 2% 5%", fontSize : '30px'}} > 사진 미리보기0 </div>
                     <button className = "back_button" onClick = {NecklaceClick}> <FontAwesomeIcon icon = {faArrowLeft} color="white" size = "3x"/> </button>
                 </div>
                 
-                <img src="08c3d43117adf478.jpg" style={{position: 'fixed', left : sizing.left}} width = {sizing.width} height = {sizing.height}/>
+                <img src="08c3d43117adf478.jpg" style={{position: 'absolute', left : sizing.left * (window.innerWidth / sizing.wWidth)}} width = {sizing.width} height = {sizing.height}/>
                 
-                <div className = "Link_list" style={{width: sizing.width, left : sizing.left, backgroundColor : "rgba(0,0,0,0.5)"}}>
+                <div className = "Link_list" style={{width: sizing.width, left : sizing.left, backgroundColor : "rgba(0,0,0,0.5)", zindex : 2}}>
                     <div className = "Link">
                         <img className="icons" src = "btnG_icon_square.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05}
                         onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')}/>

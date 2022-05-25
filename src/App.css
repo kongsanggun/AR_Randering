@@ -42,20 +42,41 @@
 #camera_main {
   background-color: rgb(64, 64, 64);
 
-  position: fixed;
   z-Index: 2;
   top : 0;
   left: 0;
 
-  width : 100vw;
-  height : 100vh;
-  min-width: 100vw;
-  min-height: 100vh;
+  overflow-y: hidden;
+  height: 100%;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  margin: 0px;
+  border: 0px;
+
+  position: sticky;
+  overflow-x: auto;
+
+  width : 100%;
+  height : 100vh;
+}
+
+#camera_main_0 {
+  background-color: rgb(64, 64, 64);
+
+  z-Index: 2;
+  top : 0;
+  left: 0;
+
+  overflow-y: auto;
+  height: 100%;
+
+  margin: 0px;
+  border: 0px;
+
+  position: sticky;
+  overflow-x: hidden;
+
+  width : 100%;
+  height : 100vh;
 }
 
 .camera_mamu_0 {
@@ -68,7 +89,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
 }
+.camera_mamu_0::-webkit-scrollbar{
+	/*  스크롤바 막대 너비 설정 */
+    width: 6px;
+}
+
+
 .camera_mamu {
   position: absolute;
   
@@ -84,16 +113,25 @@
 
 .list_0{
   z-Index: 2; 
+  padding: 0px;
+  border: 0px;
 
-  height: 100vh;
-  width: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
   margin-left: 1vw;
 }
+
+.list_0 div {
+  display: block;
+}
+
+/* 스크롤바 설정*/
+.list_0::-webkit-scrollbar{
+	/*  스크롤바 막대 너비 설정 */
+    width: 1px;
+}
+
 .list {
   z-index: 2;
 
@@ -107,25 +145,9 @@
   margin-top: 3%;
   margin-bottom: 3%;
 }
-
-/* 스크롤바 설정*/
 .list::-webkit-scrollbar{
 	/*  스크롤바 막대 너비 설정 */
-    width: 0px;
-}
-
-/* 스크롤바 막대 설정*/
-.list::-webkit-scrollbar-thumb{
-	 /* 스크롤바 막대 높이 설정    */
-    height: 17%;
-    background-color: rgba(255,255,255,1);
-    /* 스크롤바 둥글게 설정    */
-    border-radius: 10px;    
-}
-
-/* 스크롤바 뒷 배경 설정*/
-.list::-webkit-scrollbar-track{
-    background-color: rgba(0,0,0,0);
+    width: 1px;
 }
 
 .snap_0 {
@@ -174,8 +196,8 @@
 
   background: rgb(255, 255, 255, 0.5);
   border-radius: 3%;
-  border: 1px solid rgb(255, 0, 0);
   padding : 0px 0px 0px 0px;
+  margin-bottom: 5px;
   color: rgb(255, 255, 255);
   max-width: 150px;
   max-height: 150px;
@@ -184,11 +206,14 @@
 }
 
 .preview_0 {
-  position: fixed;
+  position: sticky;
   z-Index: 2;
 
   width : 100%;
-  height : 100%;
+  height : 100vh;
+
+  overflow-x: auto;
+  overflow-y: hidden;
 
   background-color: rgb(64, 64, 64);
   display: flex;
@@ -197,13 +222,19 @@
   justify-content: flex-end;
   color: white;
 }
-.preview {
-  position: fixed;
-  z-Index: 2;
 
+.preview {
+  position: sticky;
   top : 0;
-  width : 100vw;
-  height : 100vh;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  width : 100%;
+  height: 100vh;
+
+  margin: 0px;
+  border: 0px;
 
   background-color: rgb(64, 64, 64);
   display: flex;

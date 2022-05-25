@@ -96,7 +96,7 @@ const compute_sizing = () => {
   const top = (mode === 0) ? 0 : "8%"
   const left = (wWidth - width) / 2
 
-  return {width, height, top, left, mode}
+  return {width, height, top, left, mode, wheight, wWidth}
 }
 
 function App() {
@@ -239,7 +239,7 @@ function App() {
     return JEELIZFACEFILTER.destroy
   }, [isInitialized])
 
-  console.log('RENDER')
+  console.log(window.innerHeight)
 
   function GuidePAgeClick(e){window.location.href = "/GuidePage"}
 
@@ -255,32 +255,31 @@ function App() {
       <img id = "preview" style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
       <canvas className = "snap" ref={pictureCanvasRef} style={{position: 'absolute', zIndex: -1, ...sizing}} width = {sizing.width} height = {sizing.height} /> {/* 모델 저장 */}
 
-      <div className = "camera_mamu_0" style={{top : 0, left : (sizing.left + sizing.width)}}>  {/* 메뉴 */}
+      <div className = "camera_mamu_0" style={{top : 0, left : (sizing.left * (window.innerWidth / sizing.wWidth) + sizing.width)}}>  {/* 메뉴 */}
       
         <div style={{zIndex: 2, height: "100%", width: "1.5vw", background : "rgba(0,0,255,0)" }}> </div>
 
-        <div className = "list_0" style={{width: "auto", height: "100vh", overflow : "auto"}}> {/* 모델 리스트 */}
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(255, 0, 0)"}}
+        <div className = "list_0" style={{top : 0, width: window.innerWidth * 0.075, height: '100%'}}> {/* 모델 리스트 */}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(255, 0, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태 1"} </button> {/*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */}
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 255, 0)"}}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 255, 0)"}}
             onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
             if(visible1) {_temporary1 = 1; setVisible2(false);}
             else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}
             onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
 
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerHeight * 0.1, width: window.innerHeight * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
         </div>
         
         <div className = "snap_0"> {/* 버튼 리스트 */}
-          <button className = "snap_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick={snapshot}>
+          <button className = "snap_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075}} onClick={snapshot}>
           </button> {/* 화면을 캡쳐하는 버튼 */}
         </div>
 
@@ -293,7 +292,7 @@ function App() {
 
   else {
     return (
-    <div id='camera_main'>  
+    <div id='camera_main_0'>  
       <div className = "Title_img"> 
         <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}}/>
       </div>
