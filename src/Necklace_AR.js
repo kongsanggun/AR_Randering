@@ -201,6 +201,7 @@ function App() {
     let nowimageName = todayTime();
     setImageName(nowimageName);
 
+    // 업로드 하는 코드
     mergeImages([
       camera.current.toDataURL('image/png'),
       canvas.toDataURL('image/png'),
@@ -220,9 +221,14 @@ function App() {
      .then(res => { 
        //상태 출력
          console.warn(res);
+        GuidePageClick();
+     }).catch(err => {
+       console.log(err);
      });
     })
   })
+
+  
   
   useEffect(() => {
     window.addEventListener('resize', handle_resize)
@@ -241,7 +247,7 @@ function App() {
 
   console.log(window.innerHeight)
 
-  function GuidePAgeClick(e){window.location.href = "/GuidePage"}
+  function GuidePageClick(e){window.location.href = "/GuidePage"}
 
   if (sizing.mode === 0) { // 0 : 출력화면이 가로가 길 경우
     return (
@@ -285,7 +291,7 @@ function App() {
 
       </div>
 
-      <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, left : window.innerWidth - 150}} onClick = {GuidePAgeClick}> 다음 페이지로 이동 </button>
+      <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, left : window.innerWidth - 150}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
 
     </div>
     )}
@@ -337,7 +343,7 @@ function App() {
 
       </div>
       
-      <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, top : window.innerHeight - 50}} onClick = {GuidePAgeClick}> 다음 페이지로 이동 </button>
+      <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, top : window.innerHeight - 50}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
 
     </div>
   )}  
