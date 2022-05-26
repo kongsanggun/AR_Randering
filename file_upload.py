@@ -20,9 +20,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def hello():
     return 'hello!'
 # test communicate
-@app.route('/api')
+@app.route('/api', methods = ['GET','POST'])
 def hellos():
     return {
+        
         "hoal" : "how"
     }
 
@@ -51,7 +52,7 @@ def bring_data_image():
     path = "UPLOAD_FOLD"
     files = os.listdir(path)
     newlist = []
-
+    
     for file in files:
         if file.endswith(".png"):
             newlist.append(file)

@@ -1,9 +1,8 @@
 {
-  "name": "tmp",
+  "name": "helloworld",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
-  "proxy": "http://127.0.0.1:5000/",
+  "proxy":"http://localhost:5000",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -18,30 +17,29 @@
     "axios": "^0.27.2",
     "facefilter": "^3.1.3",
     "gsap": "^3.10.4",
+    "http-proxy-middleware": "^2.0.6",
     "merge-images": "^2.0.0",
     "react": "^18.1.0",
     "react-camera-pro": "^1.1.1",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "4.0.3",
     "react-webcam": "^7.0.1",
     "start": "^5.1.0",
     "styled-components": "^5.3.5",
     "three": "^0.139.2",
-    "web-vitals": "^2.1.4",
-    "webpack": "^5.72.1"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [

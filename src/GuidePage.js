@@ -22,19 +22,22 @@ const compute_sizing = () => {
     return {width, height, top, left, mode}
 }
 const sizing = compute_sizing()
-
+function NecklaceClick(e){
+  window.location.href = "Necklace_AR"
+}
 
 const bring_image = () => {
   let url = "/api";
-    axios.get({url,
-    }).then((res) =>{
-      console.warn(res);
-      return res;
-    }).catch(err => {
-      console.log(err);
-    });
-}
+  axios.post(url, {
+    // 주소와 formdata를 posting 한다
+ })
+ .then(res => { 
+   //상태 출력
 
+     console.warn(res);
+     NecklaceClick();
+ })
+}
 const GuidePage = () => {
     
 
