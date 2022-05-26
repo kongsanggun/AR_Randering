@@ -5,6 +5,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useScript } from "./hooks";
 import Images from "./public/17a6ac053b34cc9b9.jpg";
+import axios from "axios";
 const compute_sizing = () => {
     // compute  size of the canvas:
     const wheight = (window.innerHeight)
@@ -23,12 +24,24 @@ const compute_sizing = () => {
 const sizing = compute_sizing()
 
 
+const bring_image = () => {
+  let url = "/api";
+    axios.get({url,
+    }).then((res) =>{
+      console.warn(res);
+      return res;
+    }).catch(err => {
+      console.log(err);
+    });
+}
+
 const GuidePage = () => {
     
 
     function NecklaceClick(e){
         window.location.href = "Necklace_AR"
     }
+
 
     const status = useScript("https://developers.kakao.com/sdk/js/kakao.js");
 	
@@ -102,7 +115,7 @@ const GuidePage = () => {
                     </div>
                     <div id = "create-kakao-link-btn" className = "Link">
                         <img className="icons" src = "kakaolink_btn_medium.png" height = {window.innerHeight * 0.05} width = {window.innerHeight * 0.05} 
-                        onClick = {handleKakaoButton}/>
+                        onClick = {bring_image}/>
                         Kakao
                     </div>
                     

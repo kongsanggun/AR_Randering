@@ -1,6 +1,7 @@
+from fileinput import filename
 import mimetypes
 import os
-from flask import Flask, render_template, request, send_file, session
+from flask import Flask, render_template, request, send_file, send_from_directory, session
 from werkzeug.utils import secure_filename
 import logging
 import imghdr
@@ -21,7 +22,9 @@ def hello():
 # test communicate
 @app.route('/api')
 def hellos():
-    return "http://127.0.0.1:5000/api/08c3d43117adf478_copy.jpg"
+    return {
+        "hoal" : "how"
+    }
 
 
 
@@ -56,14 +59,35 @@ def bring_data_image():
     
     print (newlist)
     return newlist
-    
+
+@app.route('/return_image',methods=['GET','POST'])
+def serve_image():
+    path = "UPLOAD_FOLD"
+    files = os.listdir(path)
+    newlist = []
+    counter=0
+    for file in files:
+        counter=counter+1
+        if file.endswith(".png"):
+            newlist.append(file)
+        newlist.append(file)
+
+    counter=counter-1
+    print (newlist)
+    return send_from_directory(path,newlist[counter])
+
+@app.route('/download')
+def downloadFile ():
+    #For windows you need to use drive name [ex: F:/Example.pdf]
+    path = "/public/08c3d43117adf478.jpg"
+    return send_file(path, as_attachment=True)
 
 
 #api testing data
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port = 5000)
 
 
 
