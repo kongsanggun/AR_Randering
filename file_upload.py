@@ -74,13 +74,14 @@ def downloadFile ():
     counter=0
     for file in files:
         counter=counter+1
+
         if file.endswith(".png"):
             newlist.append(file)
     #files_path = ('./src/image/'+'08c3d43117adf478_copy.jpg')
     print(counter)
     files_path = ('./src/image/'+str(newlist[counter-1]))
     counter=counter-1
-    response = (send_file(files_path,mimetype='image/png'))
+    response = (send_file(files_path,mimetype='image/png',as_attachment=True))
     #response.headers['Content-Transfer-Encoding']='base64'
     print (newlist)
     print(files_path)
