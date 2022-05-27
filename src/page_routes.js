@@ -7,7 +7,7 @@ import Earring_AR from "./Earring_AR";
 import Necklace_AR from "./Necklace_AR";
 import MainHome from "./MainHome";
 import GuidePage from "./GuidePage";
-
+import Thankyou from "./Thankyou";
 function Buttons() {
     return (
         <Router>
@@ -18,7 +18,7 @@ function Buttons() {
                 <Route path = "/Necklace_AR" element = {<Necklace_AR/>}/>
                 <Route path = "/Earring_AR" element = {<Earring_AR/>}/>
                 <Route path="/GuidePage" element = {<GuidePage/>}/>
-            
+                <Route path="/Thankyou" element = {<Thankyou/>}/>
             </Routes>
         </Router>
     );

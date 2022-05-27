@@ -28,7 +28,6 @@ const _faceFollowers = new Array(_maxFacesDetected)
 let _temporary1 = 0 // 임의로 만든 변수
 let _temporary2 = false // 임의로 만든 변수
 const _temporary3 = 1 // 임의로 만든 변수
-
 let _expressions = null
 
 const FaceFollower2 = (props) => {
@@ -201,7 +200,7 @@ function App() {
     let nowimageName = todayTime();
     setImageName(nowimageName);
 
-    // 업로드 하는 코드
+    // 업로드 하는 코드x`
     mergeImages([
       camera.current.toDataURL('image/png'),
       canvas.toDataURL('image/png'),

@@ -60,7 +60,13 @@ const GuidePage = () => {
   }
  function NecklaceClick(e) {
     window.location.href = "Necklace_AR"
+
   }
+
+  function ThankyouClick(e){
+    window.location.href = "Thankyou"
+}
+
   const status = useScript("https://developers.kakao.com/sdk/js/kakao.js");
 
   // kakao sdk 초기화하기
@@ -121,6 +127,7 @@ const GuidePage = () => {
         <div className="Title_img_0" style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth), width: sizing.width }} >
           <div style={{ padding: "2% 1% 2% 5%", fontSize: '30px' }} > 사진 미리보기0 </div>
           <button className="back_button" onClick={NecklaceClick}> <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button>
+          <button className = "next_button" onClick={ThankyouClick}></button>
         </div>
 
         <img src={"http://localhost:5000/bring_data"} style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
@@ -134,12 +141,16 @@ const GuidePage = () => {
 
           <div className="Link">
             <img className="icons" src="btnG_icon_square.png" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05}
-              onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')} />
+              onClick={() =>
+                {
+              window.open('https://www.naver.com/', '_blank')
+                }
+             } />
             Naver
           </div>
           <div id="create-kakao-link-btn" className="Link">
             <img className="icons" src="kakaolink_btn_medium.png" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05}
-              onClick={bring_image}
+              onClick={{bring_image, ThankyouClick}}
                />
             Kakao
           </div>
@@ -155,21 +166,33 @@ const GuidePage = () => {
       <div className="preview">
         <div className="Title_img">
           <div style={{ padding: "1% 5% 1% 5%", fontSize: '20px' }} > 사진 미리보기1 </div>
-          <button className="back_button" onClick={NecklaceClick}> <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button>
+          <button className="back_button" onClick={NecklaceClick}>
+             <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button>
+             <button className = "next_button" onClick={ThankyouClick}></button>
         </div>
 
-        <img src="08c3d43117adf478.jpg" width={sizing.width} height={sizing.height} />
+        
+        <img src={"http://localhost:5000/bring_data"} style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
 
         <div className="Link_list" style={{ width: "100vw" }}>
+           {/* 지금 구현 중인 곳이다 */}
+
+           <div className="Link">
+
+<a href={"http://localhost:5000/download"} download><button type="button">다운로드</button></a>
+</div>
+
           <div className="Link">
             <img className="icons" src="btnG_icon_square.png" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05}
-              onClick={() => window.open('https://studio.zepeto.me/kr/console/auth/signin', '_blank')} />
+              onClick={() => {
+                window.open('https://www.naver.com/', '_blank')
+                  }} />
             Naver
           </div>
           <div className="Link">
 
             <img id="create-kakao-link-btn" className="icons" src="kakaolink_btn_medium.png" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05}
-              onClick={handleKakaoButton} />
+              onClick={{handleKakaoButton,ThankyouClick}} />
             Kakao
           </div>
 
