@@ -190,7 +190,7 @@ function App() {
   const [visible2,setVisible2] = useState(true);
   const [visible3,setVisible3] = useState(true);
   const [imageName, setImageName] = useState('');
-    const [convertedFile,setConvertedFile] = useState("");
+    const [convertedFile2,setConvertedFile2] = useState();
 
   const snapshot = useCallback(() => {
     const canvas = pictureCanvasRef.current;
@@ -210,6 +210,8 @@ function App() {
       console.log(b64);
       const convertedFile = dataURLtoFile(b64, todayTime() + ".png");
       console.warn(convertedFile);
+      setConvertedFile2(convertedFile);
+      console.warn(convertedFile2);
       const data = new FormData();
       data.append('file', convertedFile);
 
@@ -221,7 +223,7 @@ function App() {
      .then(res => { 
        //상태 출력
          console.warn(res);
-        GuidePageClick();
+        //GuidePageClick();
      }).catch(err => {
        console.log(err);
      });
@@ -349,4 +351,4 @@ function App() {
   )}  
 };
 
-export default App;
+export {App as default};
