@@ -14,7 +14,7 @@ function Model({ ...props }) {
   const { nodes, materials } = useGLTF('/model/necklace/gold_necklace__chain/scene.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[0.0, -0.35, -0.70]} rotation={[0, 0, 0]} scale={[7, 5.5, 5]}>
+      <group position={[0.0, -0.35, -0.9]} rotation={[0, 0, 0]} scale={[7, 5.5, 4]}>
         <mesh geometry={nodes.Neclace_Silver_0.geometry} material={materials.Silver} />
       </group>
     </group>

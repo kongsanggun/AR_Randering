@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import KakaoShareButton from "./KakaoShare";
 
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useScript } from "./hooks";
 
@@ -113,18 +113,20 @@ if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
   return (
     <div className="preview_0">
       <div className="Title_img_0" style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth), width: sizing.width }} >
-        <div style={{ padding: "2% 1% 2% 5%", fontSize: '30px' }} > 사진 미리보기0 </div>
+        <div style={{ padding: "2% 1% 2% 5%", fontSize: '30px' }} > 사진 미리보기 </div>
         <button className="back_button" onClick={NecklaceClick}> <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button>
         <button className="next_button" onClick={ThankyouClick}></button>
       </div>
 
       <img src={"http://localhost:5000/bring_data"} style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
 
-      <div className="Link_list" style={{ width: sizing.width, left: sizing.left, backgroundColor: "rgba(0,0,0,0.5)", zindex: 2 }}>
+      <div className="Link_list" style={{ width: sizing.width, left: sizing.left, zindex: 2 }}>
         {/* 지금 구현 중인 곳이다 */}
         <div className="Link">
-
-          <a href={"http://localhost:5000/download"} download><button type="button">다운로드</button></a>
+          <a href={"http://localhost:5000/download"} download> <button className = "download" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05} type="button">
+          <FontAwesomeIcon icon={faDownload} color="white" size="2x" />
+          </button></a>
+          Download
         </div>
 
         <div className="Link">
@@ -151,22 +153,25 @@ else { // 1 : 출력화면이 세로가 길 경우
   return (
 
     <div className="preview">
+
       <div className="Title_img">
-        <div style={{ padding: "1% 5% 1% 5%", fontSize: '20px' }} > 사진 미리보기1 </div>
+        <div style={{ padding: "1% 5% 1% 5%", fontSize: '20px' }} > 사진 미리보기 </div>
         <button className="back_button" onClick={NecklaceClick}>
           <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button>
-        <button className="next_button" onClick={ThankyouClick}></button>
+        <button className="next_button" onClick={ThankyouClick}> </button>
       </div>
 
-
-      <img src={"http://localhost:5000/bring_data"} style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
+      <img src={"http://localhost:5000/bring_data"} style={{left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
 
       <div className="Link_list" style={{ width: "100vw" }}>
         {/* 지금 구현 중인 곳이다 */}
 
         <div className="Link">
 
-          <a href={"http://localhost:5000/download"} download><button type="button">다운로드</button></a>
+          <a href={"http://localhost:5000/download"} download><button className = "download" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05} type="button">
+          <FontAwesomeIcon icon={faDownload} color="white" size="2x" />
+          </button></a>
+          Download
         </div>
 
         <div className="Link">

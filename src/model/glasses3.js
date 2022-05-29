@@ -14,7 +14,7 @@ function Model({ ...props }) {
   const { nodes, materials } = useGLTF('/model/glasses/glasses3/scene.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale = {[0.65, 0.67, 0.67]} position = {[0.01, 0.1, 0.5]}>
+      <group rotation={[-Math.PI / 2, 0, 0]} scale = {[0.65, 0.75, 0.5]} position = {[0, 0.15, 0.6]}>
         <mesh geometry={nodes.Object_2.geometry} material={materials.material_4} />
         <mesh geometry={nodes.Object_3.geometry} material={materials.Default_Material} />
         <mesh geometry={nodes.Object_4.geometry} material={materials.Default_Material} />

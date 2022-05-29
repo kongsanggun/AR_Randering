@@ -14,7 +14,7 @@ function Model({ ...props }) {
   const { nodes, materials } = useGLTF('/model/necklace/gothic_pendant_necklace/scene.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-        <group position={[0, -1.78, -0.040]} rotation={[Math.PI * (0.358), 0, 0]} scale={[0.008, 0.007, 0.0062]}>
+        <group position={[0, -1.78, -0.043]} rotation={[Math.PI * (0.3), 0, 0]} scale={[0.008, 0.007, 0.0062]}>
           <group position={[407.62, 590.39, -100.55]} rotation={[1.89, 0.88, -2.05]} scale={100}>
             <group rotation={[Math.PI / 2, 0, 0]} />
           </group>

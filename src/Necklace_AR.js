@@ -1,81 +1,72 @@
 import React, {Suspense, useRef, useState, useEffect, useCallback} from 'react';
+import mergeImages from 'merge-images';
+import axios from 'axios';
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { JEELIZFACEFILTER, NN_4EXPR } from 'facefilter'
 import { JeelizThreeFiberHelper } from './faceFilter/JeelizThreeFiberHelper.js'
-import mergeImages from 'merge-images';
 
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
 import {Model as Head} from './model/Head.js' 
 // 얼굴 3D 모델 (목부분에는 목걸이 모델이 보이지 않기 위함)
-
-import {Model as GoldChain} from './model/GoldChain' // 확인
-import {Model as Earring} from './model/Earring' // 완료
-import {Model as GoldNecklace} from './model/gold_necklace' // 확인
-import {Model as GothicPendant} from './model/gothic_pendant' // 확인
-import {Model as JashinNecklace} from './model/jashin_necklace' // 확인
 
 import {Model as Glasses} from './model/glasses' // 완료
 import {Model as Glasses2} from './model/glasses2' // 완료
 import {Model as Glasses3} from './model/glasses3' // 완료
 
+import {Model as GoldChain} from './model/GoldChain' // 확인
+import {Model as GoldNecklace} from './model/gold_necklace' // 확인
+import {Model as GothicPendant} from './model/gothic_pendant' // 확인
+import {Model as JashinNecklace} from './model/jashin_necklace' // 확인
+
+import {Model as Earring} from './model/Earring' // 완료
+import {Model as NestedPattern} from './model/nested_pattern' // 완료
+import {Model as GoldLeaf} from './model/gold_leaf' // 완료
+import {Model as SwanEarring} from './model/swan_earring' // 완료
+
 //import { LineStrip } from 'three';
 
 const _maxFacesDetected = 1 // max number of detected faces
 const _faceFollowers = new Array(_maxFacesDetected)
-let _temporary1 = 0 // 임의로 만든 변수
-let _temporary2 = false // 임의로 만든 변수
-const _temporary3 = 1 // 임의로 만든 변수
 let _expressions = null
 
-const FaceFollower2 = (props) => {
+let _temporary1 = 1 // 임의로 만든 변수
+
+const FaceFollower = (props) => {
   // This reference will give us direct access to the mesh
   const objRef = useRef()
   useEffect(() => {
     const threeObject3D = objRef.current
     _faceFollowers[props.faceIndex] = threeObject3D  
   })
+
+  function Select(){
+    switch(_temporary1){
+      case 1 : return <Glasses/>
+      case 2 : return <Glasses2/>
+      case 3 : return <Glasses3/>
+      case 4 : return <GoldNecklace/>
+      case 5 : return <GothicPendant/>
+      case 6 : return <JashinNecklace/>
+      case 7 : return <Earring/>
+      case 8 : return <NestedPattern/>
+      case 9 : return <GoldLeaf/>
+      default:
+        return null;
+    }
+  }
   
   return (
     <object3D ref={objRef}>
         <Suspense fallback={null}>
           <ambientLight/>
-          <Glasses3/>
+          <Head/>
+          {Select()}
       </Suspense>
     </object3D>
   )}
 
-const FaceFollower0 = (props) => {
-    return ( 
-        <Earring/>
-    ) 
-  }
-
-const FaceFollower = (props) => {
-    // This reference will give us direct access to the mesh
-    const objRef = useRef()
-
-    useEffect(() => {
-      const threeObject3D = objRef.current
-      _faceFollowers[props.faceIndex] = threeObject3D  
-      console.log(_temporary1)
-      console.log(_temporary2)
-    })
-    
-    return (
-      <object3D ref={objRef} >
-        <Suspense fallback={null}>
-        <ambientLight/>
-        {_temporary2 && <GoldChain/> }
-        <Head/>
-        </Suspense>
-      </object3D>
-    ) 
-  }
-
 let _threeFiber = null
+
 const DirtyHook = (props) => {
   _threeFiber = useThree()
   useFrame(JeelizThreeFiberHelper.update_camera.bind(null, props.sizing, _threeFiber.camera))
@@ -185,11 +176,8 @@ function App() {
   const camera = useRef(null) // 카메라 입력
   const canvasRef = useRef(null) // 3D 모델 출력
   const pictureCanvasRef = useRef(null) // 임시로 카메라 입력받은거 canvas에 출력
-  const [visible1,setVisible1] = useState(true);
-  const [visible2,setVisible2] = useState(true);
-  const [visible3,setVisible3] = useState(true);
   const [imageName, setImageName] = useState('');
-    const [convertedFile2,setConvertedFile2] = useState();
+  const [convertedFile2,setConvertedFile2] = useState();
 
   const snapshot = useCallback(() => {
     const canvas = pictureCanvasRef.current;
@@ -228,8 +216,6 @@ function App() {
      });
     })
   })
-
-  
   
   useEffect(() => {
     window.addEventListener('resize', handle_resize)
@@ -250,13 +236,32 @@ function App() {
 
   function GuidePageClick(e){window.location.href = "/GuidePage"}
 
+  const [visible, setVisible] = useState(true);
+  const [visible1, setVisible1] = useState(true);
+  const [visible2, setVisible2] = useState(true);
+  const [visible3, setVisible3] = useState(true);
+  const [visible4, setVisible4] = useState(true);
+  const [visible5, setVisible5] = useState(true);
+  const [visible6, setVisible6] = useState(true);
+  const [visible7, setVisible7] = useState(true);
+  const [visible8, setVisible8] = useState(true);
+
+  function testPage(num) {
+    var i, tablinks;
+    tablinks = document.getElementsByClassName("visible_button");
+    for (i = 0; i < tablinks.length; i++) {
+        if (i === num) { tablinks[i].style.opacity = "1";}
+          else {tablinks[i].style.opacity = "0.35";}
+    }
+  }
+
   if (sizing.mode === 0) { // 0 : 출력화면이 가로가 길 경우
     return (
       <div id='camera_main'>     
         <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
             gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
               <DirtyHook sizing={sizing} />
-              <FaceFollower2 faceIndex={0} expression={_expressions[0]} />
+              <FaceFollower faceIndex={0} expression={_expressions[0]} />
         </Canvas>
       <canvas className='camera' ref={camera} style={{position: 'absolute', zIndex: 0, ...sizing}} width = {sizing.width} height = {sizing.height} />
       <img id = "preview" style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
@@ -267,22 +272,24 @@ function App() {
         <div style={{zIndex: 2, height: "100%", width: "1.5vw", background : "rgba(0,0,255,0)" }}> </div>
 
         <div className = "list_0" style={{top : 0, width: window.innerWidth * 0.075, height: '100%'}}> {/* 모델 리스트 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(255, 0, 0)"}}
-            onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
-            if(visible1) {_temporary1 = 1; setVisible2(false);}
-            else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태 1"} </button> {/*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 255, 0)"}}
-            onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
-            if(visible1) {_temporary1 = 1; setVisible2(false);}
-            else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}
-            onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
-
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", opacity : 1}}
+            onClick = {() => {testPage(0); setVisible(true); if(visible) {_temporary1 = 1; setVisible(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(1); setVisible1(true); if(visible1) {_temporary1 = 2; setVisible1(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(2); setVisible2(true); if(visible2) {_temporary1 = 3; setVisible2(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(3); setVisible3(true); if(visible3) {_temporary1 = 4; setVisible3(false)} }}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(4); setVisible4(true); if(visible4) {_temporary1 = 5; setVisible4(false)} }}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(5); setVisible5(true); if(visible5) {_temporary1 = 6; setVisible5(false)} }}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
+            onClick = {() => {testPage(6); setVisible6(true); if(visible6) {_temporary1 = 7; setVisible6(false)} }}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
+            onClick = {() => {testPage(7); setVisible7(true); if(visible7) {_temporary1 = 8; setVisible7(false)} }}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
+            onClick = {() => {testPage(8); setVisible8(true); if(visible8) {_temporary1 = 9; setVisible8(false)} }}> </button>            
         </div>
         
         <div className = "snap_0"> {/* 버튼 리스트 */}
@@ -293,7 +300,6 @@ function App() {
       </div>
 
       <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, left : window.innerWidth - 150}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
-
     </div>
     )}
 
@@ -307,7 +313,7 @@ function App() {
       <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
           gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
             <DirtyHook sizing={sizing} />
-            <FaceFollower2 faceIndex={0} expression={_expressions[0]} />
+            <FaceFollower faceIndex={0} expression={_expressions[0]} />
       </Canvas>
       <canvas className='camera' ref={camera} style={{position: 'absolute', zIndex: 0, ...sizing}} width = {sizing.width} height = {sizing.height} />
       <img id = "preview" style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
@@ -318,23 +324,24 @@ function App() {
         <div style={{zIndex: 2, height: "4vh", width: "100%", background : "rgba(0,0,255,0)" }}> </div>
 
         <div className = "list" style={{width: "auto", height: "auto", overflow : "auto"}}> {/* 모델 리스트 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(255, 0, 0)"}}
-            onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
-            if(visible1) {_temporary1 = 1; setVisible2(false);}
-            else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 1" : "모자 숨겨진 상태 1"} </button> {/*여기에서 버튼을 통해 불러오기 각각 불러오기 시도 하려고 했으나 일부분 짤리는 현상 발생 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 255, 0)"}}
-            onClick= {() => {setVisible1(!visible1) // 버튼을 보면 후크를 통해 클릭시 계속하여 true false 번갈아 가면서 할당 해줌
-            if(visible1) {_temporary1 = 1; setVisible2(false);}
-            else{_temporary1 = 0}}}> {visible1 ? "모자 보이는 상태 2" : "모자 숨겨진 상태 2"} </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}
-            onClick= {() => {setVisible3(!visible3);_temporary3 = visible3}}> {visible3 ? "목걸이 보여진 상태 2" : "목걸이 숨겨진 상태 2"} </button>
-
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "1px solid rgb(0, 0, 255)"}}></button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", opacity : 1}}
+            onClick = {() => {testPage(0); setVisible(true); if(visible) {_temporary1 = 1; setVisible(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(1); setVisible1(true); if(visible1) {_temporary1 = 2; setVisible1(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(2); setVisible2(true); if(visible2) {_temporary1 = 3; setVisible2(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(3); setVisible3(true); if(visible3) {_temporary1 = 4; setVisible3(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(4); setVisible4(true); if(visible4) {_temporary1 = 5; setVisible4(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
+            onClick = {() => {testPage(5); setVisible5(true); if(visible5) {_temporary1 = 6; setVisible5(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
+            onClick = {() => {testPage(6); setVisible6(true); if(visible6) {_temporary1 = 7; setVisible6(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
+            onClick = {() => {testPage(7); setVisible7(true); if(visible7) {_temporary1 = 8; setVisible7(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
+            onClick = {() => {testPage(8); setVisible8(true); if(visible8) {_temporary1 = 9; setVisible8(false)}}}> </button>
         </div>
         
         <div className = "snap"> {/* 버튼 리스트 */}
@@ -345,7 +352,6 @@ function App() {
       </div>
       
       <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, top : window.innerHeight - 50}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
-
     </div>
   )}  
 };
