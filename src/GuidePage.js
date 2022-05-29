@@ -113,7 +113,7 @@ if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
   return (
     <div className="preview_0">
       <div className="Title_img_0" style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth), width: sizing.width }} >
-        <div style={{ padding: "2% 1% 2% 5%", fontSize: '30px' }} > 사진 미리보기 </div>
+        <div style={{ padding: "2% 1% 2% 5%", fontSize: '30px'}} > 사진 미리보기 </div>
         <button className="back_button" onClick={NecklaceClick}> <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button>
         <button className="next_button" onClick={ThankyouClick}></button>
       </div>

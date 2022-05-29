@@ -10,15 +10,24 @@ const Thankyou = () => {
     return (
       <div className="App">
       <header className="App-header">
-        <h1>감사합니다!</h1>
-        
-        <p>다음에도 이용해주시길 바랍니다!</p>
+        <div className = "header">
+          <p className="header-text"> 감사합니다!</p>
+          <p className="header-text2" >다음에도 이용해주시길 바랍니다.</p>
+          <p className="header-text2" >다시 이용하실려면 돌아가기 버튼을 눌러주세요.</p>
+          <button className = "start" onClick={MainClick} > 메인으로 돌아가기 </button>
+        </div>
 
-        <p>다시 이용하실려면 돌아가기 버튼을 눌러주세요!</p>
-        <button className = "buttontransfer"
-            onClick={MainClick} > 메인으로 돌아가기 </button>
-                
-        </header>
+        <div className="main" style = {{opacity: '0'}}>
+            
+        </div>
+      
+        <div className = "footer">
+          <div>
+            <p className = "footer_text"> ACC Studio by JSC Team (2022) <a href="https://github.com/kongsanggun/AR_Randering"> github </a> </p>
+          </div>
+        </div>       
+      </header>
+
       </div>
     );
   };

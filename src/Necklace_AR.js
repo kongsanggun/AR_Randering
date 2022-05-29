@@ -272,24 +272,24 @@ function App() {
         <div style={{zIndex: 2, height: "100%", width: "1.5vw", background : "rgba(0,0,255,0)" }}> </div>
 
         <div className = "list_0" style={{top : 0, width: window.innerWidth * 0.075, height: '100%'}}> {/* 모델 리스트 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", opacity : 1}}
-            onClick = {() => {testPage(0); setVisible(true); if(visible) {_temporary1 = 1; setVisible(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(1); setVisible1(true); if(visible1) {_temporary1 = 2; setVisible1(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(2); setVisible2(true); if(visible2) {_temporary1 = 3; setVisible2(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(3); setVisible3(true); if(visible3) {_temporary1 = 4; setVisible3(false)} }}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(4); setVisible4(true); if(visible4) {_temporary1 = 5; setVisible4(false)} }}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(5); setVisible5(true); if(visible5) {_temporary1 = 6; setVisible5(false)} }}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
-            onClick = {() => {testPage(6); setVisible6(true); if(visible6) {_temporary1 = 7; setVisible6(false)} }}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
-            onClick = {() => {testPage(7); setVisible7(true); if(visible7) {_temporary1 = 8; setVisible7(false)} }}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
-            onClick = {() => {testPage(8); setVisible8(true); if(visible8) {_temporary1 = 9; setVisible8(false)} }}> </button>            
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 1}}
+            onClick = {() => {testPage(0); setVisible(true); if(visible) {_temporary1 = 1; setVisible(false)}}}> <img src = 'glasses1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(1); setVisible1(true); if(visible1) {_temporary1 = 2; setVisible1(false)}}}> <img src = 'glasses2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(2); setVisible2(true); if(visible2) {_temporary1 = 3; setVisible2(false)}}}> <img src = 'glasses3.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(3); setVisible3(true); if(visible3) {_temporary1 = 4; setVisible3(false)} }}> <img src = 'necklace1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(4); setVisible4(true); if(visible4) {_temporary1 = 5; setVisible4(false)} }}> <img src = 'necklace2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(5); setVisible5(true); if(visible5) {_temporary1 = 6; setVisible5(false)} }}> <img src = 'necklace3.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(6); setVisible6(true); if(visible6) {_temporary1 = 7; setVisible6(false)} }}> <img src = 'earring1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(7); setVisible7(true); if(visible7) {_temporary1 = 8; setVisible7(false)} }}> <img src = 'earring2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(8); setVisible8(true); if(visible8) {_temporary1 = 9; setVisible8(false)} }}> <img src = 'earring3.png' height = {'100%'} wheight = {'100%'} /> </button>            
         </div>
         
         <div className = "snap_0"> {/* 버튼 리스트 */}
@@ -324,24 +324,24 @@ function App() {
         <div style={{zIndex: 2, height: "4vh", width: "100%", background : "rgba(0,0,255,0)" }}> </div>
 
         <div className = "list" style={{width: "auto", height: "auto", overflow : "auto"}}> {/* 모델 리스트 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", opacity : 1}}
-            onClick = {() => {testPage(0); setVisible(true); if(visible) {_temporary1 = 1; setVisible(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(1); setVisible1(true); if(visible1) {_temporary1 = 2; setVisible1(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(2); setVisible2(true); if(visible2) {_temporary1 = 3; setVisible2(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(3); setVisible3(true); if(visible3) {_temporary1 = 4; setVisible3(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(4); setVisible4(true); if(visible4) {_temporary1 = 5; setVisible4(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", opacity : 0.35}}
-            onClick = {() => {testPage(5); setVisible5(true); if(visible5) {_temporary1 = 6; setVisible5(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
-            onClick = {() => {testPage(6); setVisible6(true); if(visible6) {_temporary1 = 7; setVisible6(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
-            onClick = {() => {testPage(7); setVisible7(true); if(visible7) {_temporary1 = 8; setVisible7(false)}}}> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", opacity : 0.35}}
-            onClick = {() => {testPage(8); setVisible8(true); if(visible8) {_temporary1 = 9; setVisible8(false)}}}> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 1}}
+            onClick = {() => {testPage(0); setVisible(true); if(visible) {_temporary1 = 1; setVisible(false)}}}> <img src = 'glasses1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(1); setVisible1(true); if(visible1) {_temporary1 = 2; setVisible1(false)}}}> <img src = 'glasses2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(2); setVisible2(true); if(visible2) {_temporary1 = 3; setVisible2(false)}}}> <img src = 'glasses3.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(3); setVisible3(true); if(visible3) {_temporary1 = 4; setVisible3(false)}}}> <img src = 'necklace1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(4); setVisible4(true); if(visible4) {_temporary1 = 5; setVisible4(false)}}}> <img src = 'necklace2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(5); setVisible5(true); if(visible5) {_temporary1 = 6; setVisible5(false)}}}> <img src = 'necklace3.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(6); setVisible6(true); if(visible6) {_temporary1 = 7; setVisible6(false)}}}> <img src = 'earring1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(7); setVisible7(true); if(visible7) {_temporary1 = 8; setVisible7(false)}}}> <img src = 'earring2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {testPage(8); setVisible8(true); if(visible8) {_temporary1 = 9; setVisible8(false)}}}> <img src = 'earring3.png' height = {'100%'} wheight = {'100%'} /> </button>
         </div>
         
         <div className = "snap"> {/* 버튼 리스트 */}
