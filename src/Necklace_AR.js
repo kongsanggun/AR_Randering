@@ -2,6 +2,9 @@ import React, {Suspense, useRef, useState, useEffect, useCallback} from 'react';
 import mergeImages from 'merge-images';
 import axios from 'axios';
 
+import "./App.css";
+import "./loading.css"
+
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { JEELIZFACEFILTER, NN_4EXPR } from 'facefilter'
 import { JeelizThreeFiberHelper } from './faceFilter/JeelizThreeFiberHelper.js'
@@ -125,7 +128,8 @@ function App() {
 
     console.log('INFO: JEELIZFACEFILTER IS READY')
     // there is only 1 face to track, so 1 face follower:
-    JeelizThreeFiberHelper.init(spec, _faceFollowers, callbackDetect)    
+    JeelizThreeFiberHelper.init(spec, _faceFollowers, callbackDetect)
+    Endloading();
   }
 
   const callbackTrack = (detectStatesArg) => {
@@ -140,7 +144,8 @@ function App() {
 
     // get expressions factors:
     detectStates.forEach((detectState, faceIndex) => {
-    })    
+    })
+
   }
 
   const callbackDetect = (faceIndex, isDetected) => {
@@ -229,12 +234,24 @@ function App() {
       callbackReady,
       callbackTrack
     })
+
     return JEELIZFACEFILTER.destroy
   }, [isInitialized])
 
   console.log(window.innerHeight)
 
   function GuidePageClick(e){window.location.href = "/GuidePage"}
+
+  function Endloading(e) {
+    const element = document.getElementById("loading");
+    element.style.display = 'none';
+  }
+
+  function ClickSnap(e) {
+    const element = document.getElementById("snaped");
+    element.classList.remove("snap_active");
+    element.classList.add("snap_active"); 
+  } // 찰칵 효과
 
   const [visible, setVisible] = useState(true);
   const [visible1, setVisible1] = useState(true);
@@ -257,18 +274,22 @@ function App() {
 
   if (sizing.mode === 0) { // 0 : 출력화면이 가로가 길 경우
     return (
-      <div id='camera_main'>     
+      <div id='camera_main'>
+        <div id = 'loading' style={{position: 'absolute', zIndex: 5, ...sizing}} width = {sizing.width} height = {sizing.height}> 
+            <div className="loading-css"></div>
+            <div id="loading-text">loading</div>
+        </div>
+        <div id = 'snaped' style={{position: 'absolute', zIndex: 4, ...sizing}} width = {sizing.width} height = {sizing.height}> </div>    
         <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
             gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
               <DirtyHook sizing={sizing} />
               <FaceFollower faceIndex={0} expression={_expressions[0]} />
         </Canvas>
       <canvas className='camera' ref={camera} style={{position: 'absolute', zIndex: 0, ...sizing}} width = {sizing.width} height = {sizing.height} />
-      <img id = "preview" style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
+      <img id = "preview" src = 'ready.png' style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
       <canvas className = "snap" ref={pictureCanvasRef} style={{position: 'absolute', zIndex: -1, ...sizing}} width = {sizing.width} height = {sizing.height} /> {/* 모델 저장 */}
 
       <div className = "camera_mamu_0" style={{top : 0, left : (sizing.left * (window.innerWidth / sizing.wWidth) + sizing.width)}}>  {/* 메뉴 */}
-      
         <div style={{zIndex: 2, height: "100%", width: "1.5vw", background : "rgba(0,0,255,0)" }}> </div>
 
         <div className = "list_0" style={{top : 0, width: window.innerWidth * 0.075, height: '100%'}}> {/* 모델 리스트 */}
@@ -293,7 +314,7 @@ function App() {
         </div>
         
         <div className = "snap_0"> {/* 버튼 리스트 */}
-          <button className = "snap_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075}} onClick={snapshot}>
+          <button className = "snap_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075}} onClick={() => {snapshot(); ClickSnap();}}>
           </button> {/* 화면을 캡쳐하는 버튼 */}
         </div>
 
@@ -310,13 +331,18 @@ function App() {
         <div style={{padding: "1% 5% 1% 5%", fontSize : '20px'}}/>
       </div>
       
+      <div id = 'loading' style={{position: 'absolute', zIndex: 5, ...sizing}} width = {sizing.width} height = {sizing.height}> 
+            <div className="loading-css"></div>
+            <div id="loading-text">loading</div>
+      </div>
+      <div id = 'snaped' style={{position: 'absolute', zIndex: 4, ...sizing}} width = {sizing.width} height = {sizing.height}> </div>
       <Canvas className='camera' ref={canvasRef} style={{position: 'absolute', zIndex: 1, ...sizing}} width = {sizing.width} height = {sizing.height} 
           gl={{ preserveDrawingBuffer: true }} updatedefaultcamera = "false"> {/* allow image capture */}
             <DirtyHook sizing={sizing} />
             <FaceFollower faceIndex={0} expression={_expressions[0]} />
       </Canvas>
       <canvas className='camera' ref={camera} style={{position: 'absolute', zIndex: 0, ...sizing}} width = {sizing.width} height = {sizing.height} />
-      <img id = "preview" style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
+      <img id = "preview" src = 'ready.png' style={{position: 'absolute', zIndex: 3, ...sizing}} width = {sizing.width} height = {sizing.height} />  {/* 캡쳐한 이미지 출력 */}
       <canvas className = "snap" ref={pictureCanvasRef} style={{position: 'absolute', zIndex: -1, ...sizing}} width = {sizing.width} height = {sizing.height} /> {/* 모델 저장 */}
       
       <div className = "camera_mamu" style={{top : sizing.height}}>  {/* 메뉴 */}
@@ -345,7 +371,7 @@ function App() {
         </div>
         
         <div className = "snap"> {/* 버튼 리스트 */}
-          <button className = "snap_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick={snapshot}>
+          <button className = "snap_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick={() => {snapshot(); ClickSnap();}}>
           </button> {/* 화면을 캡쳐하는 버튼 */}
         </div>
 

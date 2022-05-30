@@ -131,6 +131,24 @@
   color: inherit;
 }
 
+#loading {
+  background-color: rgb(32, 32, 32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes loading_end {
+  100% {background-color: rgba(255, 255, 255, 0);}
+}
+
+#loading.loading_end {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: loading_end;
+  animation-name: loading_end;
+}
+
 #camera_main {
   background-color: rgb(64, 64, 64);
 
@@ -283,6 +301,7 @@
   color: rgb(0, 0, 0);
 }
 
+
 .visible_button {
   z-Index: 2; 
   
@@ -294,6 +313,23 @@
   max-height: 150px;
   min-width: 75px;
   min-height: 75px;
+}
+
+#snaped {
+  background-color: rgb(255, 255, 255, 0);
+}
+
+@keyframes snap_active {
+  0%   {background-color: rgba(255, 255, 255, 0);}
+  25%  {background-color: rgba(255, 255, 255, 1);}
+  100% {background-color: rgba(255, 255, 255, 0);}
+}
+
+#snaped.snap_active {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: snap_active;
+  animation-name: snap_active;
 }
 
 .preview_0 {
