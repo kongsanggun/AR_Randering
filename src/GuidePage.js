@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import KakaoShareButton from "./KakaoShare";
 
-import { faArrowLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useScript } from "./hooks";
 
@@ -17,7 +17,6 @@ const compute_sizing = () => {
   const height = Math.min(wWidth, wheight)
   const width = Math.min(wWidth, wheight)
   const mode = (height === wheight) ? 0 : 1 // 0 : 웹 , 1 : 폰
-
   // compute position of the canvas:
   const top = 0
   const left = (wWidth - width) / 2
@@ -113,9 +112,9 @@ if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
   return (
     <div className="preview_0">
       <div className="Title_img_0" style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth), width: sizing.width }} >
-        <div style={{ padding: "2% 1% 2% 5%", fontSize: '30px'}} > 사진 미리보기 </div>
-        <button className="back_button" onClick={NecklaceClick}> <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button>
-        <button className="next_button" onClick={ThankyouClick}></button>
+        <button className="back_button" onClick={NecklaceClick}> <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button> {/* 돌아가기 */}
+        <div style={{padding: "2% 0% 2% 0%", fontSize: 'calc(20px + 1vmin)'}} > 사진 미리보기 </div>
+        <button className="next_button" onClick={ThankyouClick}> <FontAwesomeIcon icon={faArrowRight} color="white" size="3x" /> </button> {/* 감사 */}
       </div>
 
       <img src={"http://localhost:5000/bring_data"} style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
@@ -158,10 +157,9 @@ else { // 1 : 출력화면이 세로가 길 경우
     <div className="preview">
 
       <div className="Title_img">
-        <div style={{ padding: "1% 5% 1% 5%", fontSize: '20px' }} > 사진 미리보기 </div>
-        <button className="back_button" onClick={NecklaceClick}>
-          <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button>
-        <button className="next_button" onClick={ThankyouClick}> </button>
+        <button className="back_button" onClick={NecklaceClick}> <FontAwesomeIcon icon={faArrowLeft} color="white" size="3x" /> </button> {/* 돌아가기 */}
+        <div style={{padding: "2% 0% 2% 0%", fontSize: 'calc(20px + 1vmin)'}} > 사진 미리보기 </div>
+        <button className="next_button" onClick={ThankyouClick}> <FontAwesomeIcon icon={faArrowRight} color="white" size="3x" /> </button> {/* 감사 */}
       </div>
 
       <img src={"http://localhost:5000/bring_data"} style={{left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />

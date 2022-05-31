@@ -14,7 +14,7 @@ function Model({ ...props }) {
   const { nodes, materials } = useGLTF('/model/necklace/jashin_necklace/scene.gltf')
   return (
     <group ref={group} {...props} dispose={null}>
-      <group position={[0, -1.8, -0.12]} rotation={[Math.PI * (1.49), 0, 0]} scale={[0.18, 0.155, 0.155]}>
+      <group position={[0, -1.8, -0.05]} rotation={[Math.PI * (1.45), 0, 0]} scale={[0.18, 0.155, 0.155]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh geometry={nodes.Object_4.geometry} material={materials.Material} />
           <mesh geometry={nodes.Object_5.geometry} material={materials.Material} />
