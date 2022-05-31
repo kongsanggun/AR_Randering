@@ -32,9 +32,9 @@ const _maxFacesDetected = 1 // max number of detected faces
 const _faceFollowers = new Array(_maxFacesDetected)
 let _expressions = null
 
-let glasses_mode = 1 // 안경 변수
-let necklace_mode = 1 // 목걸이 변수
-let earring_mode = 1 // 귀걸이 변수
+let glasses_mode = 0 // 안경 변수
+let necklace_mode = 0 // 목걸이 변수
+let earring_mode = 0 // 귀걸이 변수
 
 const FaceFollower = (props) => {
   // This reference will give us direct access to the mesh
@@ -271,37 +271,50 @@ function App() {
     element.classList.add("snap_active"); 
   } // 찰칵 효과
 
+  const [all_reset, set_all_reset] = useState(true);
+
+  const [G_reset, set_G_reset] = useState(true);
   const [visible, setVisible] = useState(true);
   const [visible1, setVisible1] = useState(true);
   const [visible2, setVisible2] = useState(true);
+
+  const [N_reset, set_N_reset] = useState(true);
   const [visible3, setVisible3] = useState(true);
   const [visible4, setVisible4] = useState(true);
   const [visible5, setVisible5] = useState(true);
+
+  const [E_reset, set_E_reset] = useState(true);
   const [visible6, setVisible6] = useState(true);
   const [visible7, setVisible7] = useState(true);
   const [visible8, setVisible8] = useState(true);
 
   function Page(num) {
-    
     var i, tablinks;
     tablinks = document.getElementsByClassName("visible_button");
 
-    if (num < 3)
-    {
-      for (i = 0; i < 3; i++) {
+    if (num === 0) {
+      for (i = 0; i < tablinks.length; i++) {
         if (i === num) { tablinks[i].style.opacity = "1";}
           else {tablinks[i].style.opacity = "0.35";}
       }
     }
-    else if(num < 6)
-    {
-      for (i = 3; i < 6; i++) {
+    else if (num < 5) {
+      tablinks[0].style.opacity = "0.35";
+      for (i = 1; i < 5; i++) {
+        if (i === num) { tablinks[i].style.opacity = "1";}
+          else {tablinks[i].style.opacity = "0.35";}
+      }
+    }
+    else if(num < 9) {
+      tablinks[0].style.opacity = "0.35";
+      for (i = 5; i < 9; i++) {
         if (i === num) { tablinks[i].style.opacity = "1";}
           else {tablinks[i].style.opacity = "0.35";}
       }
     }
     else {
-      for (i = 6; i < tablinks.length; i++) {
+      tablinks[0].style.opacity = "0.35";
+      for (i = 9; i < tablinks.length; i++) {
         if (i === num) { tablinks[i].style.opacity = "1";}
           else {tablinks[i].style.opacity = "0.35";}
       }
@@ -329,24 +342,35 @@ function App() {
         <div style={{zIndex: 2, height: "100%", width: "1.5vw", background : "rgba(0,0,255,0)" }}> </div>
 
         <div className = "list_0" style={{top : 0, width: window.innerWidth * 0.075, height: '100%'}}> {/* 모델 리스트 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 1}}
-            onClick = {() => {Page(0); setVisible(true); if(visible) {glasses_mode = 1; setVisible(false)}}}> <img src = 'glasses1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 0)", background: 'rgba(255, 255, 255, 0.5)', opacity : 1}}
+            onClick = {() => {Page(0); set_all_reset(true); if(all_reset) {glasses_mode = 0; necklace_mode = 0; earring_mode = 0; set_all_reset(false);} else {glasses_mode = 0; necklace_mode = 0; earring_mode = 0; set_all_reset(true);}}}> ALL Reset </button> {/* 전체 리셋 */}
+
           <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(1); setVisible1(true); if(visible1) {glasses_mode = 2; setVisible1(false)}}}> <img src = 'glasses2.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(1); set_G_reset(true); if(G_reset) {glasses_mode = 0; set_G_reset(false);} else {glasses_mode = 0; set_G_reset(true);}}}> Glasses Reset </button> {/* 안경만 리셋 */}
           <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(2); setVisible2(true); if(visible2) {glasses_mode = 3; setVisible2(false)}}}> <img src = 'glasses3.png' height = {'100%'} wheight = {'100%'} /> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 1}}
-            onClick = {() => {Page(3); setVisible3(true); if(visible3) {necklace_mode = 1; setVisible3(false)} }}> <img src = 'necklace1.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(2); setVisible(true); if(visible) {glasses_mode = 1; setVisible(false);} else {glasses_mode = 1; setVisible(true);}}}> <img src = 'glasses1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(3); setVisible1(true); if(visible1) {glasses_mode = 2; setVisible1(false);} else {glasses_mode = 2; setVisible1(true);}}}> <img src = 'glasses2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(4); setVisible2(true); if(visible2) {glasses_mode = 3; setVisible2(false);} else {glasses_mode = 3; setVisible2(true);}}}> <img src = 'glasses3.png' height = {'100%'} wheight = {'100%'} /> </button>
+
           <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(4); setVisible4(true); if(visible4) {necklace_mode = 2; setVisible4(false)} }}> <img src = 'necklace2.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(5); set_N_reset(true); if(N_reset) {necklace_mode = 0; set_N_reset(false);} else {necklace_mode = 0; set_N_reset(true);}}}> Necklace Reset </button> {/* 목걸이만 리셋 */}
           <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(5); setVisible5(true); if(visible5) {necklace_mode= 3; setVisible5(false)} }}> <img src = 'necklace3.png' height = {'100%'} wheight = {'100%'} /> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 1}}
-            onClick = {() => {Page(6); setVisible6(true); if(visible6) {earring_mode = 1; setVisible6(false)} }}> <img src = 'earring1.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(6); setVisible3(true); if(visible3) {necklace_mode = 1; setVisible3(false);} else {necklace_mode = 1; setVisible3(true);}}}> <img src = 'necklace1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(7); setVisible4(true); if(visible4) {necklace_mode = 2; setVisible4(false);} else {necklace_mode = 2; setVisible4(true);}}}> <img src = 'necklace2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(8); setVisible5(true); if(visible5) {necklace_mode= 3; setVisible5(false);} else {necklace_mode = 3; setVisible5(true);}}}> <img src = 'necklace3.png' height = {'100%'} wheight = {'100%'} /> </button>
+
           <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(7); setVisible7(true); if(visible7) {earring_mode = 2; setVisible7(false)} }}> <img src = 'earring2.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(9); set_E_reset(true); if(E_reset) {earring_mode = 0; set_N_reset(false);} else {earring_mode = 0; set_E_reset(true);}}}> Earring Reset </button> {/* 귀걸이만 리셋 */}
           <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(8); setVisible8(true); if(visible8) {earring_mode = 3; setVisible8(false)} }}> <img src = 'earring3.png' height = {'100%'} wheight = {'100%'} /> </button>            
+            onClick = {() => {Page(10); setVisible6(true); if(visible6) {earring_mode = 1; setVisible6(false);} else {earring_mode = 1; setVisible6(true);}}}> <img src = 'earring1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(11); setVisible7(true); if(visible7) {earring_mode = 2; setVisible7(false);} else {earring_mode = 2; setVisible7(true);}}}> <img src = 'earring2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.075, width: window.innerWidth * 0.075, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(12); setVisible8(true); if(visible8) {earring_mode = 3; setVisible8(false);} else {earring_mode = 3; setVisible8(true);}}}> <img src = 'earring3.png' height = {'100%'} wheight = {'100%'} /> </button>            
         </div>
         
         <div className = "snap_0"> {/* 버튼 리스트 */}
@@ -386,24 +410,35 @@ function App() {
         <div style={{zIndex: 2, height: "4vh", width: "100%", background : "rgba(0,0,255,0)" }}> </div>
 
         <div className = "list" style={{width: "auto", height: "auto", overflow : "auto"}}> {/* 모델 리스트 */}
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 1}}
-            onClick = {() => {Page(0); setVisible(true); if(visible) {glasses_mode = 1; setVisible(false)}}}> <img src = 'glasses1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 0)", background: 'rgba(255, 255, 255, 0.5)', opacity : 1}}
+            onClick = {() => {Page(0); set_all_reset(true); if(all_reset) {glasses_mode = 0; necklace_mode = 0; earring_mode = 0; set_all_reset(false);} else {glasses_mode = 0; necklace_mode = 0; earring_mode = 0; set_all_reset(true);}}}> ALL Reset </button> {/* 전체 리셋 */}
+
           <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(1); setVisible1(true); if(visible1) {glasses_mode = 2; setVisible1(false)}}}> <img src = 'glasses2.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(1); set_G_reset(true); if(G_reset) {glasses_mode = 0; set_G_reset(false);} else {glasses_mode = 0; set_G_reset(true);}}}> Glasses Reset </button> {/* 안경만 리셋 */}
           <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(2); setVisible2(true); if(visible2) {glasses_mode = 3; setVisible2(false)}}}> <img src = 'glasses3.png' height = {'100%'} wheight = {'100%'} /> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 1}}
-            onClick = {() => {Page(3); setVisible3(true); if(visible3) {necklace_mode = 1; setVisible3(false)}}}> <img src = 'necklace1.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(2); setVisible(true); if(visible) {glasses_mode = 1; setVisible(false);} else {glasses_mode = 1; setVisible(true);}}}> <img src = 'glasses1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(3); setVisible1(true); if(visible1) {glasses_mode = 2; setVisible1(false);} else {glasses_mode = 2; setVisible1(true);}}}> <img src = 'glasses2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(255, 0, 0)", background: 'rgba(200, 20, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(4); setVisible2(true); if(visible2) {glasses_mode = 3; setVisible2(false);} else {glasses_mode = 3; setVisible2(true);}}}> <img src = 'glasses3.png' height = {'100%'} wheight = {'100%'} /> </button>
+
           <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(4); setVisible4(true); if(visible4) {necklace_mode = 2; setVisible4(false)}}}> <img src = 'necklace2.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(5); set_N_reset(true); if(N_reset) {necklace_mode = 0; set_N_reset(false);} else {necklace_mode = 0; set_N_reset(true);}}}> Necklace Reset </button> {/* 목걸이만 리셋 */}
           <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(5); setVisible5(true); if(visible5) {necklace_mode = 3; setVisible5(false)}}}> <img src = 'necklace3.png' height = {'100%'} wheight = {'100%'} /> </button>
-          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 1}}
-            onClick = {() => {Page(6); setVisible6(true); if(visible6) {earring_mode = 1; setVisible6(false)}}}> <img src = 'earring1.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(6); setVisible3(true); if(visible3) {necklace_mode = 1; setVisible3(false);} else {necklace_mode = 1; setVisible3(true);}}}> <img src = 'necklace1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(7); setVisible4(true); if(visible4) {necklace_mode = 2; setVisible4(false);} else {necklace_mode = 2; setVisible4(true);}}}> <img src = 'necklace2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 255, 0)", background: 'rgba(20, 200, 20, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(8); setVisible5(true); if(visible5) {necklace_mode= 3; setVisible5(false);} else {necklace_mode = 3; setVisible5(true);}}}> <img src = 'necklace3.png' height = {'100%'} wheight = {'100%'} /> </button>
+
           <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(7); setVisible7(true); if(visible7) {earring_mode = 2; setVisible7(false)}}}> <img src = 'earring2.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(9); set_E_reset(true); if(E_reset) {earring_mode = 0; set_E_reset(false);} else {earring_mode = 0; set_E_reset(true);}}}> Earring Reset </button> {/* 귀걸이만 리셋 */}
           <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
-            onClick = {() => {Page(8); setVisible8(true); if(visible8) {earring_mode= 3; setVisible8(false)}}}> <img src = 'earring3.png' height = {'100%'} wheight = {'100%'} /> </button>
+            onClick = {() => {Page(10); setVisible6(true); if(visible6) {earring_mode = 1; setVisible6(false);} else {earring_mode = 1; setVisible6(true);}}}> <img src = 'earring1.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(11); setVisible7(true); if(visible7) {earring_mode = 2; setVisible7(false);} else {earring_mode = 2; setVisible7(true);}}}> <img src = 'earring2.png' height = {'100%'} wheight = {'100%'} /> </button>
+          <button className = "visible_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1, border: "3px solid rgb(0, 0, 255)", background: 'rgba(20, 20, 200, 0.5)', opacity : 0.35}}
+            onClick = {() => {Page(12); setVisible8(true); if(visible8) {earring_mode = 3; setVisible8(false);} else {earring_mode = 3; setVisible8(true);}}}> <img src = 'earring3.png' height = {'100%'} wheight = {'100%'} /> </button> 
         </div>
         
         <div className = "snap"> {/* 버튼 리스트 */}

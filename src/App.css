@@ -313,6 +313,9 @@
   max-height: 150px;
   min-width: 75px;
   min-height: 75px;
+
+  font-family: 'NanumSquare';
+  font-size: calc(10px + 1vmin);
 }
 
 #snaped {
