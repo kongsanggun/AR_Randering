@@ -139,7 +139,10 @@ if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
         </div>
         <div id="create-kakao-link-btn" className="Link">
           <img className="icons" src="kakaolink_btn_medium.png" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05}
-            onClick={{ ThankyouClick }}
+            onClick={() => {
+              window.open('https://accounts.kakao.com/login?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount', '_blank')
+            }
+            }
           />
           Kakao
         </div>
@@ -184,7 +187,10 @@ else { // 1 : 출력화면이 세로가 길 경우
         <div className="Link">
 
           <img id="create-kakao-link-btn" className="icons" src="kakaolink_btn_medium.png" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05}
-            onClick={{ handleKakaoButton, ThankyouClick }} />
+            onClick={() => {
+              window.open('https://accounts.kakao.com/login?continue=https%3A%2F%2Faccounts.kakao.com%2Fweblogin%2Faccount', '_blank')
+            }
+            } />
           Kakao
         </div>
 
