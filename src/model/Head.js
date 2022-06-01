@@ -5,7 +5,7 @@ license: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 source: https://sketchfab.com/3d-models/head-base-mesh-660e8173c2014cc48a785caf862da7a6
 title: Head Base Mesh
 */
-
+// 얼굴 부분 렌더링 할때 겹쳐 보이는거 방지 하기 위한 js
 import * as THREE from "three"; 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
@@ -16,11 +16,14 @@ export default function Model({ ...props }) {
   return (
     <group ref={group} {...props} dispose={null} rotation={[Math.PI * (0.5), Math.PI * (1), 0]} position={[0, 0.24, -0.29]} scale={[0.9, 1, 0.9]}>
       <group>
+        {/* material 값을 수정하여 투명도나 기타 등등을 수정 */}
         <mesh geometry={nodes.Head_basemesh_0.geometry} material={hiderMat} />
       </group>
     </group>
   )
 }
+
+// 이 부분만 따로 설정하여 투명 처리 하여 진행하였다.
 
 const hiderMat = new THREE.MeshPhongMaterial({
   attach: 'material',

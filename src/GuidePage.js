@@ -9,6 +9,7 @@ import axios from "axios";
 import { ready } from "@tensorflow/tfjs";
 import { FileSaver } from 'file-saver';
 
+// 세로와 가로 길이 조절하여 return 하는 값들이다.
 const compute_sizing = () => {
   // compute  size of the canvas:
   const wheight = (window.innerHeight)
@@ -23,19 +24,25 @@ const compute_sizing = () => {
 
   return { width, height, top, left, mode }
 }
+ // 변수 받고
 const sizing = compute_sizing()
+// router 를 통한 페이지 어디로 이동할지 결정하는 함수이다.
 function NecklaceClick(e) {
   window.location.href = "Necklace_AR"
 }
 
-
+// 페이지 가이드 메인
 const GuidePage = () => {
 
   let [changeImages, setChangeImages] = useState(null);
   console.log(changeImages);
 
   let url = "/download"
-
+  // 여기는 설명이 좀 필요한데
+  //sessionstorage로 구현을 안하였다.
+  // 즉 image 에서 파일 맨 마지막 위치를 찾아서 이름을 return 받고
+  // 하는 방식인데 여기는 그렇게 하다가 더 편한 방식을 찾아서
+  // 하다가 남은 잔재이다. 하지만 잘 쓰면 돌아갈지도?
   const handleDownload = () => {
     axios.get(url, {
       // 주소와 formdata를 posting 한다
@@ -49,13 +56,14 @@ const GuidePage = () => {
       });
   }
 
-
+// Thankyou page를 router 통해서 이동할 수 있게 하는 함수
 function ThankyouClick(e) {
   window.location.href = "Thankyou"
 }
-
+ // kakao로그인 및 공유 링크 구현할려다가 잘 안된 잔재다.
 const status = useScript("https://developers.kakao.com/sdk/js/kakao.js");
 
+// 위와 마찬가지로 하다가 잘 안된 카카오의 잔재다. 망할 카카오
 // kakao sdk 초기화하기
 // status가 변경될 때마다 실행되며, status가 ready일 때 초기화를 시도합니다.
 useEffect(() => {
@@ -106,7 +114,8 @@ const handleKakaoButton = () => {
     ],
   });
 };
-
+// 여기까지 카카오 사용할려고 예시로 하였는데 잘 되는걸 확인
+// link 부분에서는 따로 도메인을 가져와야 하는 상황이 발생하기에 포기하였다.
 
 if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
   return (

@@ -18,7 +18,7 @@ function KakaoShare() {
 				window.Kakao.init('c452cde88c858e578906042615650624');
 			}
 		}
-	}, [status]);	
+	}, [status]);
 
 }
 

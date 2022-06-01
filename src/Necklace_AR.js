@@ -12,6 +12,9 @@ import { JeelizThreeFiberHelper } from './faceFilter/JeelizThreeFiberHelper.js'
 import {Model as Head} from './model/Head.js' 
 // 얼굴 3D 모델 (목부분에는 목걸이 모델이 보이지 않기 위함)
 
+// 각각 모델들을 가져왔습니다. 
+// 위에서 부터 안경, 목걸이, 귀걸이 총 3가지 방향으로 진행하였습니다.
+
 import {Model as Glasses} from './model/glasses' // 완료
 import {Model as Glasses2} from './model/glasses2' // 완료
 import {Model as Glasses3} from './model/glasses3' // 완료
@@ -44,6 +47,7 @@ const FaceFollower = (props) => {
     _faceFollowers[props.faceIndex] = threeObject3D  
   })
 
+  // 버튼 작동하는 기능들 목걸이간, 귀걸이간, 안경간 중복되지 않게 누를수 있게 구현
   function G_Select(){
     switch(glasses_mode){
       case 1 : return <Glasses/>
@@ -94,6 +98,7 @@ const DirtyHook = (props) => {
   return null
 }
 
+// 사이즈를 조정해서 폰일 경우와 웹일 경우를 구별
 const compute_sizing = () => {
   // compute  size of the canvas:
   const wheight = (window.innerHeight)
@@ -101,15 +106,18 @@ const compute_sizing = () => {
 
   const height = Math.min(wWidth, wheight) 
   const width = Math.min(wWidth, wheight)
+  // height, weight 1:1기준으로 하여 진행하였다.
   const mode = (height === wheight) ? 0 : 1 // 0 : 웹 , 1 : 폰
 
   // compute position of the canvas:
   const top = (mode === 0) ? 0 : "8%"
   const left = (wWidth - width) / 2
-
+  // 나머지 값들 다 return
   return {width, height, top, left, mode, wheight, wWidth}
 }
 
+
+// 메인 app function 시작
 function App() {
   // init state:
   _expressions = []
@@ -118,6 +126,7 @@ function App() {
   const [isInitialized,setisInitialized] = useState(true)
 
   let _timerResize = null
+  // 시간마다 랜더링 되는 모델 자동 리사이징
   const handle_resize = () => {
     // do not resize too often:
     if (_timerResize){
@@ -126,30 +135,34 @@ function App() {
     _timerResize = setTimeout(do_resize, 200)
   }
 
+  // 
   const do_resize = () => {
     _timerResize = null
     const newSizing = compute_sizing()
     setSizing(newSizing)
   }
-
+  // useeffect 로 return 한다
   useEffect(() => {
     if (!_timerResize) {
       JEELIZFACEFILTER.resize()
     }    
   }, [sizing])
 
+
+  // 카메라 로딩 되면서 준비 되었는지 확인되는 함수
   const callbackReady = (errCode, spec) => {
     if (errCode){
       console.log('AN ERROR HAPPENS. ERR =', errCode)
       return
     }
-
+    
     console.log('INFO: JEELIZFACEFILTER IS READY')
     // there is only 1 face to track, so 1 face follower:
     JeelizThreeFiberHelper.init(spec, _faceFollowers, callbackDetect)
+    // 로딩되면 카메라로 return
     Endloading();
   }
-
+  // tracking 하기 위한 함수들
   const callbackTrack = (detectStatesArg) => {
     // if 1 face detection, wrap in an array:
     const detectStates = (detectStatesArg.length) ? detectStatesArg : [detectStatesArg]
@@ -166,6 +179,7 @@ function App() {
 
   }
 
+  // 랜더링 되기 위한 얼굴을 detect 하였는지 확인하기 위한 함수
   const callbackDetect = (faceIndex, isDetected) => {
     if (isDetected) {
       console.log('DETECTED')
@@ -173,10 +187,13 @@ function App() {
       console.log('LOST')
     }
   }
+  //  dataurl 를 base64로 받기 위한 함수 (사용 안함)
   const getBase64StringFromDataURL = (dataURL) => {
     dataURL.replace('data:', '').replace(/^.+,/, '')
   };
 
+
+  // dataurl를 file 형식으로 받기 위한 함수
   const dataURLtoFile = (dataurl, fileName) => {
 
     var arr = dataurl.split(','),
@@ -191,17 +208,21 @@ function App() {
 
     return new File([u8arr], fileName, { type: mime });
   }
+
+  // 현재 시간 출력 한국 기준
   const todayTime = () => {
     let now = new Date().toString();
     return now;
   }
 
+  
   const camera = useRef(null) // 카메라 입력
   const canvasRef = useRef(null) // 3D 모델 출력
   const pictureCanvasRef = useRef(null) // 임시로 카메라 입력받은거 canvas에 출력
   const [imageName, setImageName] = useState('');
   const [convertedFile2,setConvertedFile2] = useState();
 
+  // snapshot 콜백 함수 canvas 형태로 해서 그려서 붙이는 방식
   const snapshot = useCallback(() => {
     const canvas = pictureCanvasRef.current;
 
@@ -211,11 +232,13 @@ function App() {
     let nowimageName = todayTime();
     setImageName(nowimageName);
 
-    // 업로드 하는 코드x`
+    // 업로드 하는 코드x` , 사진과 랜더링 된 사진 mergeing 하는 함수
     mergeImages([
       camera.current.toDataURL('image/png'),
       canvas.toDataURL('image/png'),
     ]).then((b64) => {
+      // 여기가 중요한데 b64 형태가 base64 형태 코드로 해서 mergeing 한걸 받음
+      // 그다음 file 형태로 만들어서 서버로 보내는 방식으로 구현하였다.
       document.getElementById('preview').src = b64;
       console.log(b64);
       const convertedFile = dataURLtoFile(b64, todayTime() + ".png");
@@ -224,8 +247,8 @@ function App() {
       console.warn(convertedFile2);
       const data = new FormData();
       data.append('file', convertedFile);
-
-      let url = "/uploader";
+      // 플라스크 uploader 참조 사진 보내면 서버에서 저장한다.
+      let url = "/uploader";  
 
       axios.post(url, data, {
         // 주소와 formdata를 posting 한다
@@ -240,6 +263,7 @@ function App() {
     })
   })
   
+  //윈도우 크기 확인하여 ui 나 기타 등등 변경하게 만든다.
   useEffect(() => {
     window.addEventListener('resize', handle_resize)
     window.addEventListener('orientationchange', handle_resize)
@@ -256,21 +280,26 @@ function App() {
     return JEELIZFACEFILTER.destroy
   }, [isInitialized])
 
+
+  // 높이 확인하여 웹인지 앱인지 확인
   console.log(window.innerHeight)
 
+  // 다음 페이지 , 즉 GuidePage 로 이동 되게 구현하였다.
   function GuidePageClick(e){window.location.href = "/GuidePage"}
 
+  // endloading 되면 style 죽이고 return 
   function Endloading(e) {
     const element = document.getElementById("loading");
     element.style.display = 'none';
   }
-
+  // 사진 찍도록 구현하였다.
   function ClickSnap(e) {
     const element = document.getElementById("snaped");
     element.classList.remove("snap_active");
     element.classList.add("snap_active"); 
   } // 찰칵 효과
 
+  // 버튼 visible 유무
   const [all_reset, set_all_reset] = useState(true);
 
   const [G_reset, set_G_reset] = useState(true);
@@ -288,6 +317,7 @@ function App() {
   const [visible7, setVisible7] = useState(true);
   const [visible8, setVisible8] = useState(true);
 
+  // 버튼 구현 22
   function Page(num) {
     var i, tablinks;
     tablinks = document.getElementsByClassName("visible_button");
@@ -384,7 +414,7 @@ function App() {
     </div>
     )}
 
-  else {
+  else { // 1: 출력화면이 세로가 길 경우
     return (
     <div id='camera_main_0'>  
       <div className = "Title_img"> 

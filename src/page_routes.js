@@ -8,6 +8,10 @@ import Necklace_AR from "./Necklace_AR";
 import MainHome from "./MainHome";
 import GuidePage from "./GuidePage";
 import Thankyou from "./Thankyou";
+
+// 이번 프로젝트의 router 이동하기 위한 페이지 이다.
+// 예외처리를 NotFound.js  로 표현하였다.
+
 function Buttons() {
     return (
         <Router>
@@ -19,6 +23,7 @@ function Buttons() {
                 <Route path = "/Earring_AR" element = {<Earring_AR/>}/>
                 <Route path="/GuidePage" element = {<GuidePage/>}/>
                 <Route path="/Thankyou" element = {<Thankyou/>}/>
+                <Route path="*" element={<Notfound/>} /> 
             </Routes>
         </Router>
     );
