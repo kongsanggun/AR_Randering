@@ -1,9 +1,13 @@
 /* eslint-disable */
 import * as THREE from 'three'
 
+// facefilter 를 가져와서 그대로 적용하였습니다
+
 /*
   Helper for THREE Fiber. You can customize it
 */
+
+
 
 const superThat = (function(){
   // internal settings:

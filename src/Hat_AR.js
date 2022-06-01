@@ -1,7 +1,7 @@
 // 이 js 는 쓰이지 않습니다 테스트 용도로 만들었습니다 
 //Necklace_AR을 보시길 바랍니다.
 
-// this js in not used please look at Necklace_AR.js
+// this js in not used. please look at Necklace_AR.js
 
 
 import React, {Suspense, useRef, useState, useEffect} from 'react';
