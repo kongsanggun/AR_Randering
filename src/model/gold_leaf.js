@@ -26,7 +26,20 @@ function Model({ ...props }) {
           </group>
           <group position={[748.11, 534.37, 650.76]} rotation={[Math.PI, 0.76, 2.68]} scale={100} />
         </group>
-      </group>
+
+        <group position={[-0.725, -0.225, -0.235]} rotation={[Math.PI * (1), -Math.PI * (0.25), Math.PI * (1)]} scale={0.00035}>
+          <group position={[-7.25, 605.04, 109.21]} rotation={[0.23, 0.09, -1.68]} scale={286.68}>
+            <mesh geometry={nodes.Cylinder_Material001_0.geometry} material={materials['Material.001']} />
+          </group>
+          <group position={[0, 581.75, 0]} rotation={[-3.14, 0.2, 0.97]} scale={7.56}>
+            <mesh geometry={nodes['Feathers-1_Material002_0'].geometry} material={materials['Material.002']} />
+          </group>
+          <group position={[407.62, 590.39, -100.55]} rotation={[1.89, 0.88, -2.05]} scale={100}>
+            <group rotation={[Math.PI / 2, 0, 0]} />
+          </group>
+          <group position={[748.11, 534.37, 650.76]} rotation={[Math.PI, 0.76, 2.68]} scale={100} />
+        </group>
+    </group>
   )
 }
 

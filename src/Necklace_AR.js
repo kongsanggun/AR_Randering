@@ -410,7 +410,7 @@ function App() {
 
       </div>
 
-      <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, left : window.innerWidth - 150}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
+      <button className = "go_button" style={{position: 'fixed', zIndex: 2, top : '90vh', left : '91.5vw' , height: 'auto', width: window.innerWidth * 0.075}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
     </div>
     )}
 
@@ -475,10 +475,9 @@ function App() {
           <button className = "snap_button" style={{height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick={() => {snapshot(); ClickSnap();}}>
           </button> {/* 화면을 캡쳐하는 버튼 */}
         </div>
-
       </div>
-      
-      <button className = "buttonshow" style={{position: 'fixed', zIndex: 2, top : window.innerHeight - 50}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
+
+      <button className = "go_button" style={{position: 'fixed', zIndex: 2, top : '73.5vh', left : '78.5vw' , height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
     </div>
   )}  
 };

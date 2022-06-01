@@ -18,6 +18,11 @@ function Model({ ...props }) {
         <mesh geometry={nodes.Object_2.geometry} material={materials['Scene_-_Root']} />
         <mesh geometry={nodes.Object_3.geometry} material={materials['Scene_-_Root']} />
       </group>
+
+      <group position={[-0.675, -0.100, -0.238]} rotation={[-Math.PI * (0.5), 0, 0]} scale={0.0022}>
+        <mesh geometry={nodes.Object_2.geometry} material={materials['Scene_-_Root']} />
+        <mesh geometry={nodes.Object_3.geometry} material={materials['Scene_-_Root']} />
+      </group>
     </group>
   )
 }
