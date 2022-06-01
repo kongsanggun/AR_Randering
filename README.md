@@ -1,22 +1,27 @@
 # Import 해야할 거
 
-npm i react-scripts
+npm i react-scripts    //
+npm i @react-three/fiber    //
+npm i @react-three/drei    //
+npm i facefilter    //
+npm i three    //
+npm i merge-images    //
 
-# 기타 등등
-npm i @react-three/fiber
-npm i @react-three/drei
-npm i facefilter
-npm i three
-npm i merge-images
+npm i @fortawesome/fontawesome-svg-core    //
+npm i @fortawesome/free-solid-svg-icons    //
+npm i @fortawesome/react-fontawesome    //
 
-npm i @fortawesome/fontawesome-svg-core
-npm i @fortawesome/free-solid-svg-icons
-npm i @fortawesome/react-fontawesome
+# 2202/03/24 start ~~ #2022/06/03 finish
 
-# 2202/05/27
 
-# 남은 일
-1. 안경 조절, 버튼 ui 작동되게 구성 (상현) -> Done
-2. css 변경 (상현, 창근) -> 배경 이미지 생각하면 될 듯
-3. 다운로드 버튼 구현, 뒤로가기 할 시 사진 삭제 되도록 구현 (창근)
-4. 문서 작업 최종 버전 작성(준우)
+# FAS (Face Accessary Studio) 에 오신걸 환영합니다!
+
+# 여러분의 얼굴에 악세서리를 장식하여 사진을 찍어보세요!
+
+# 사진을 찍고 난후 다운로드를 하거나 NAVER or Kakaotalk에 공유해보세요!
+
+# 여러분들의 잘생긴 얼굴을 보여주세요!
+
+ngrok.exe로 실행하여 확인해보실 수 있습니다.
+
+앱으로 출시하게 되면 따로 공지할께요!

@@ -131,7 +131,7 @@ if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
         <div className="Link">
           <img className="icons" src="btnG_icon_square.png" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05}
             onClick={() => {
-              window.open('https://www.naver.com/', '_blank')
+              window.open('https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com', '_blank')
             }
             } />
           Naver
@@ -178,7 +178,7 @@ else { // 1 : 출력화면이 세로가 길 경우
         <div className="Link">
           <img className="icons" src="btnG_icon_square.png" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05}
             onClick={() => {
-              window.open('https://www.naver.com/', '_blank')
+              window.open('https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com', '_blank')
             }} />
           Naver
         </div>
