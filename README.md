@@ -18,8 +18,7 @@ npm i @fortawesome/react-fontawesome    //
 
 # 1. 카메라가 잘 되는지 확인해 보세요!
 
-<img src="/public/S_1.jpg"  width="700" height="370">
-
+![jpg_1](./public/S_1.jpg)
 
 # 사진을 찍고 난후 다운로드를 하거나 NAVER or Kakaotalk에 공유해보세요!
 
