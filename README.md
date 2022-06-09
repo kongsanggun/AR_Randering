@@ -1,6 +1,6 @@
 # 2202/03/24 start ~~ #2022/06/03 finish
 
-# Import 해야할 모듈들(배치 파일을 못만든 관계로 양해 부탁드립니다)
+## Import 해야할 모듈 모음집(배치 파일을 못만든 관계로 양해 부탁드립니다)
 
 npm i react-scripts    //
 npm i @react-three/fiber    //
@@ -12,6 +12,8 @@ npm i merge-images    //
 npm i @fortawesome/fontawesome-svg-core    //
 npm i @fortawesome/free-solid-svg-icons    //
 npm i @fortawesome/react-fontawesome    //
+
+ngrok.exe 는 포합되어 있습니다.
 
 추가할 모듈 있으면 지속적으로 추가하겠습니다.
 
