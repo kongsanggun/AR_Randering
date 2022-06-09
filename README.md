@@ -16,7 +16,10 @@ npm i @fortawesome/react-fontawesome    //
 
 # FAS (Face Accessary Studio) 에 오신걸 환영합니다!
 
-# 여러분의 얼굴에 악세서리를 장식하여 사진을 찍어보세요!
+# 1. 카메라가 잘 되는지 확인해 보세요!
+
+<img src="/public/S_1.jpg"  width="700" height="370">
+
 
 # 사진을 찍고 난후 다운로드를 하거나 NAVER or Kakaotalk에 공유해보세요!
 
