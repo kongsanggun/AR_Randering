@@ -9,7 +9,6 @@ import MainHome from "./MainHome";
 import GuidePage from "./GuidePage";
 import Thankyou from "./Thankyou";
 import Notfound from "./Notfound";
-
 // 이번 프로젝트의 router 이동하기 위한 페이지 이다.
 // 예외처리를 NotFound.js  로 표현하였다.
 

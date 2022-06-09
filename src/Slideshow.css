@@ -1,7 +1,7 @@
 .slideshow {
   position: relative;
   display : block;
-  background-color : rgba(0, 0, 255, 1);
+  background-color : rgba(32, 32, 32, 0.5);
   width : 100%;
   height : 45vh;
 }
@@ -10,6 +10,7 @@
 .prev, .next {
     cursor: pointer;
     position: absolute;
+    z-index : 2;
     top: 50%;
     width: auto;
     padding: 16px;
@@ -43,6 +44,7 @@
     font-size: calc(8px + 1vmin);
     font-family: 'NanumSquareLight';
     position: absolute;
+    z-index : 2;
     bottom: 8px;
     width: 95%;
     height: auto;
@@ -58,6 +60,7 @@
     font-family: 'NanumSquareLight';
     padding: 8px 12px;
     position: absolute;
+    z-index : 2;
     top: 0;
 }
   

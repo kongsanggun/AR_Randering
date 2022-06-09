@@ -62,11 +62,12 @@ def bring_data_image():
     print(counter)
     files_path = ('./src/image/'+str(newlist[counter-1]))
     counter=counter-1
-    response = (send_file(files_path,mimetype='image/png'))
-    #response.headers['Content-Transfer-Encoding']='base64'
+    print(counter)
     print (newlist)
     print(files_path)
-    return response
+    return (send_file(files_path,mimetype='image/png'))
+    #response.headers['Content-Transfer-Encoding']='base64'
+
 
 
 # 다운로드 하는 함수 맨 마지막 파일을 return 한다.
@@ -85,11 +86,13 @@ def downloadFile ():
     #마지막 file path 확인하는 함수
     files_path = ('./src/image/'+str(newlist[counter-1]))
     counter=counter-1
-    # return 하여 파일 보낸다.
-    response = (send_file(files_path,mimetype='image/png',as_attachment=True))
-    #response.headers['Content-Transfer-Encoding']='base64'
+    print(counter)
     print (newlist)
     print(files_path)
+    # return 하여 파일 보낸다.
+    return (send_file(files_path,mimetype='image/png',as_attachment=True))
+    #response.headers['Content-Transfer-Encoding']='base64'
+
     return response
 
 
