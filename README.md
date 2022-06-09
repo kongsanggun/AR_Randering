@@ -1,4 +1,4 @@
-# Import 해야할 거
+# Import 해야할 모듈들(배치 파일을 못만든 관계로 양해 부탁드립니다)
 
 npm i react-scripts    //
 npm i @react-three/fiber    //
@@ -20,9 +20,20 @@ npm i @fortawesome/react-fontawesome    //
 
 ![jpg_1](./public/S_1.jpg)
 
-# 사진을 찍고 난후 다운로드를 하거나 NAVER or Kakaotalk에 공유해보세요!
+# 2. 자신의 얼굴을 비춰보세요!
 
-# 여러분들의 잘생긴 얼굴을 보여주세요!
+![jpg_2](./public/11.jpg)
+
+# 3. 악세서리를 골라 렌더링 되는지 확인하세요!
+
+![jpg_3](./public/22.jpg)
+
+
+# 4. 미리보기를 보고 다운로드를 하거나 NAVER or Kakaotalk에 공유해보세요!
+
+![jpg_4](./public/33.jpg)
+
+# 이용해 주셔서 감사합니다!
 
 ngrok.exe로 실행하여 확인해보실 수 있습니다.
 
