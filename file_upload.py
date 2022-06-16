@@ -12,7 +12,7 @@ logger = logging.getLogger('HELLO WORLD')
 app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 #여기에서 upload 파일 루트 변경해 줘야 한다.
-UPLOAD_FOLD = './src/image'
+UPLOAD_FOLD = './src/public/image'
 UPLOAD_FOLD2 = './public'
 UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_FOLD)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -60,7 +60,7 @@ def bring_data_image():
             newlist.append(file)
     #files_path = ('./src/image/'+'08c3d43117adf478_copy.jpg')
     print(counter)
-    files_path = ('./src/image/'+str(newlist[counter-1]))
+    files_path = ('./src/public/image/'+str(newlist[counter-1]))
     counter=counter-1
     print(counter)
     print (newlist)
@@ -68,7 +68,24 @@ def bring_data_image():
     return (send_file(files_path,mimetype='image/png'))
     #response.headers['Content-Transfer-Encoding']='base64'
 
-
+@app.route('/bring_data2', methods = ['GET'])
+def bring_data_image2():
+    files = os.listdir(UPLOAD_FOLD)
+    newlist = []
+    counter=0
+    for file in files:
+        counter=counter+1
+        if file.endswith(".png"):
+            newlist.append(file)
+    #files_path = ('./src/image/'+'08c3d43117adf478_copy.jpg')
+    print(counter)
+    files_path = ('./src/public/image/'+str(newlist[counter-1]))
+    counter=counter-1
+    print(counter)
+    print (newlist)
+    print(files_path)
+    return (send_file(files_path,mimetype='image/png'))
+    #response.headers['Content-Transfer-Encoding']='base64'
 
 # 다운로드 하는 함수 맨 마지막 파일을 return 한다.
 @app.route('/download',methods=['GET','POST'])
@@ -102,7 +119,3 @@ def downloadFile ():
 if __name__ == '__main__':
     #5000 포트로 고정
     app.run(debug=True,port = 5000)
-
-
-
-

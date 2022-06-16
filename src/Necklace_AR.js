@@ -221,7 +221,7 @@ function App() {
   const pictureCanvasRef = useRef(null) // 임시로 카메라 입력받은거 canvas에 출력
   const [imageName, setImageName] = useState('');
   const [convertedFile2,setConvertedFile2] = useState();
-
+  const [imagenametransfer,setImageNameTransfer] = useState("");
   // snapshot 콜백 함수 canvas 형태로 해서 그려서 붙이는 방식
   const snapshot = useCallback(() => {
     const canvas = pictureCanvasRef.current;
@@ -243,6 +243,7 @@ function App() {
       console.log(b64);
       const convertedFile = dataURLtoFile(b64, todayTime() + ".png");
       console.warn(convertedFile);
+      console.warn(convertedFile.name);
       setConvertedFile2(convertedFile);
       console.warn(convertedFile2);
       const data = new FormData();
@@ -260,8 +261,23 @@ function App() {
      }).catch(err => {
        console.log(err);
      });
+
+     let url3 = "/bring_data"
+     axios.get(url3, {
+       // 주소와 formdata를 posting 한다
     })
+    .then(res => { 
+      //상태 출력
+        console.warn(res.data);
+        setImageNameTransfer(res.data);
+       //GuidePageClick();
+    }).catch(err => {
+      console.log(err);
+    });
+    })
+   
   })
+  
   
   //윈도우 크기 확인하여 ui 나 기타 등등 변경하게 만든다.
   useEffect(() => {
@@ -285,7 +301,14 @@ function App() {
   console.log(window.innerHeight)
 
   // 다음 페이지 , 즉 GuidePage 로 이동 되게 구현하였다.
-  function GuidePageClick(e){window.location.href = "/GuidePage"}
+  function GuidePageClick(e){
+    if(typeof window !== "undefined"){
+      window.sessionStorage.setItem("imagenametransfer", imagenametransfer);
+      //window.sessionStoarage.setItem("imageName",imagetemp.name)
+     // window.location.href = "/YoloPage";
+    }
+    window.location.href = "/GuidePage"
+  }
 
   // endloading 되면 style 죽이고 return 
   function Endloading(e) {
