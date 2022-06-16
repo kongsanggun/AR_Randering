@@ -59,6 +59,18 @@
   padding-right: 2.5%;
 }
 
+.Main_img {
+  height : 45vh;
+  width : auto;
+}
+
+@media screen and (max-width : 720px) {
+  .Main_img {
+    height : auto;
+    width : 90vw;
+  }
+}
+
 .fadeimg {
   background-color : rgba(0, 0, 0, 0.30);
   position: absolute;

@@ -56,28 +56,28 @@ const Home = () => {
           <div className="slideshow">
             <div className="mySlides fade">
               <div className="numbertext">1 / 4</div>
-              <img src = "S_1.jpg" style = {{ height : '45vh', width : 'auto' }}/>
+              <img className = "Main_img" src = "S_1.jpg"/>
               <div className="fadeimg" />
               <div className="text"> 1. 카메라가 정상적으로 인식 되는지 확인해 주세요! </div>
             </div>
 
             <div className="mySlides fade" style={{ display: 'none' }}>
               <div className="numbertext">2 / 4</div>
-              <img src = "11.png" style = {{ height : '45vh', width : 'auto' }}/>
+              <img className = "Main_img" src = "11.png"/>
               <div className="fadeimg" />
               <div className="text"> 2. 그 다음 카메라에 얼굴을 비추고 원하는 악세서리를 선택해 주세요! </div>
             </div>
 
             <div className="mySlides fade" style={{ display: 'none' }}>
               <div className="numbertext">3 / 4</div>
-              <img src = "22.png" style = {{ height : '45vh', width : 'auto' }}/>
+              <img className = "Main_img" src = "22.png"/>
               <div className="fadeimg" />
               <div className="text"> 3. 잠시 후 선택된 악세서리가 얼굴에 나타나게 됩니다! </div>
             </div>
 
             <div className="mySlides fade" style={{ display: 'none' }}>
               <div className="numbertext">4 / 4</div>
-              <img src = "33.png" style = {{ height : '45vh', width : 'auto' }}/>
+              <img className = "Main_img" src = "33.png"/>
               <div className="fadeimg" />
               <div className="text"> 4. 사진 미리보기와 함께 저장할 수 있는 기능과 Kakao, Naver로 이동할 수 있는 페이지가 나오게 됩니다! </div>
             </div>
