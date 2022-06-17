@@ -242,6 +242,11 @@ function App() {
       document.getElementById('preview').src = b64;
       console.log(b64);
       const convertedFile = dataURLtoFile(b64, todayTime() + ".png");
+      if(typeof window !== "undefined"){
+        window.sessionStorage.setItem("image", b64);
+        //window.sessionStoarage.setItem("imageName",imagetemp.name)
+       // window.location.href = "/YoloPage";
+      }
       console.warn(convertedFile);
       console.warn(convertedFile.name);
       setConvertedFile2(convertedFile);

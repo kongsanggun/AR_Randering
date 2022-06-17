@@ -49,13 +49,14 @@ const GuidePage = () => {
 
   let [changeImages, setChangeImages] = useState(null);
   let [confusionMatrix,setConfusionMatrix] = useState('');
-  const [previewfile, setPreviewFile] = useState("");
+  const [previewfile, setPreviewFile] = useState(sessionStorage.getItem("image"));
   const [previewfile2, setPreviewFile2] = useState("");
   console.log(changeImages);
 
   let url = "/download"
   useEffect(() => {
-    bringImagefrom();
+   // bringImagefrom();
+    console.log(previewfile);
   }, [confusionMatrix,previewfile]);
 
   const handleDownload = () => {
@@ -137,9 +138,9 @@ const bringImagefrom = () => {
       let result = fileReader.result; 
       console.log(result); 
       setConfusionMatrix(result);
-      setPreviewFile(dataURLtoFile(result,"temp.png"));
+      setPreviewFile(result);
       console.log(previewfile);
-      setPreviewFile2(URL.createObjectURL(previewfile));
+      //setPreviewFile2(URL.createObjectURL(previewfile));
   }
 }).catch(err => {
   console.log(err);
@@ -157,12 +158,12 @@ if (sizing.mode === 0) {// 0 : 출력화면이 가로가 길 경우
         <button className="next_button" onClick={ThankyouClick}></button>
       </div>
 
-      <img src={previewfile2} style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
+      <img src={previewfile} style={{ position: 'absolute', left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
 
       <div className="Link_list" style={{ width: sizing.width, left: sizing.left, zindex: 2 }}>
         {/* 지금 구현 중인 곳이다 */}
         <div className="Link">
-          <a href={"http://localhost:5000/download"} download> <button className = "download" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05} type="button">
+          <a href={previewfile} download> <button className = "download" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05} type="button">
           <FontAwesomeIcon icon={faDownload} color="white" size="2x" />
           </button></a>
           Download
@@ -203,14 +204,14 @@ else { // 1 : 출력화면이 세로가 길 경우
         <button className="next_button" onClick={ThankyouClick}> </button>
       </div>
 
-      <img src={"http://localhost:5000/bring_data2"} style={{left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
+      <img src={previewfile} style={{left: sizing.left * (window.innerWidth / sizing.wWidth) }} width={sizing.width} height={sizing.height} />
 
       <div className="Link_list" style={{ width: "100vw" }}>
         {/* 지금 구현 중인 곳이다 */}
 
         <div className="Link">
 
-          <a href={"http://localhost:5000/download"} download><button className = "download" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05} type="button">
+          <a href={previewfile} download><button className = "download" height={window.innerHeight * 0.05} width={window.innerHeight * 0.05} type="button">
           <FontAwesomeIcon icon={faDownload} color="white" size="2x" />
           </button></a>
           Download
