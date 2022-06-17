@@ -505,7 +505,7 @@ function App() {
         </div>
       </div>
 
-      <button className = "go_button" style={{position: 'fixed', zIndex: 2, top : '73.5vh', left : '78.5vw' , height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
+      <button className = "go_button" style={{position: 'fixed', zIndex: 2, top : '83.5vh', left : '78.5vw' , height: window.innerWidth * 0.1, width: window.innerWidth * 0.1}} onClick = {GuidePageClick}> 다음 페이지로 이동 </button>
     </div>
   )}  
 };
